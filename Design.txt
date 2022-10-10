@@ -1,0 +1,24 @@
+ComboBox - dungeonComboBox
+button - MaterialButton
+textBox - smallTextBox
+numericUpDown - foxNumericUpDown
+tabControl - MetroTabControl
+listBox - standart
+progressBar - parrotFlatProgressBar
+listView - standart
+
+MainForm
+realTaiizor.hopeRounButton - all form
+realTaiizor.GroupBox - all form
+listBox (standart) - all form
+realTaiizor.aloneProgressBar
+realTaiizor.dungeonComboBox
+groupBox (standart) - timer
+label (standart) - timer
+
+REPORT
+groupBox (standart) - Activity Summary, Focus Hours
+realTaiizor.hopeGroupBox - hours focused, day accessed
+cartesianChart - diagram
+realTaiizor.hopeRounButton - all form
+listView (standart)
