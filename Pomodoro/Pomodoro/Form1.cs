@@ -2,6 +2,14 @@ using System.Media;
 using Timer = System.Windows.Forms.Timer;
 using System.Drawing;
 using ReaLTaiizor.Controls;
+using Pomodoro.DataBase.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
+using Pomodoro.DataBase.Models;
+using Microsoft.Data.SqlClient;
+using Dapper;
+using Microsoft.VisualBasic;
 
 namespace Pomodoro
 {
@@ -11,16 +19,19 @@ namespace Pomodoro
         {
             InitializeComponent();
         }
-
+        
         //Timer------------------------------------------------------------------------------
         Timer timer = null!;
         int m, s;
         bool isRunning = false;
         static string path = "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\dodomu.wav";
         SoundPlayer player = new SoundPlayer(path);
-
+        
         private void FormMain_Load(object sender, EventArgs e)
         {
+            StartDB();
+            CheckDB();
+            //CreateForDB();
             lblTimer.Text = "25:00";
             this.BackColor = Color.FromArgb(215, 84, 79);
 
@@ -224,7 +235,59 @@ namespace Pomodoro
             }
         }
         //Timer------------------------------------------------------------------------------
+        //<DataBase>----------------------------------------------------------------------------
+        string ConnStr;
+        DbContextOptions<MyPomodoroProjectContext> options = null!;
+        void StartDB()
+        {
+            DbContextOptionsBuilder<MyPomodoroProjectContext> builder = new DbContextOptionsBuilder<MyPomodoroProjectContext>();
+            IConfigurationBuilder bd = new ConfigurationBuilder(); //Microsoft.Extensions.Configuration NuGet
+           
 
+            string curdir = Directory.GetCurrentDirectory();
+            string cutstr = curdir.Remove(curdir.Length - 25, 25);
+            bd.SetBasePath(Directory.GetCurrentDirectory()); //Microsoft.Extensions.Configuration.Json NuGet
+            bd.AddJsonFile(cutstr + @"\DataBase\appsettings.json");//Microsoft.Extensions.Configuration.Json NuGet
+            //bd.AddJsonFile("DataBase/appsettings.json");//Microsoft.Extensions.Configuration.Json NuGet
+            IConfigurationRoot config = bd.Build();
+            ConnStr = config.GetConnectionString("sqlConnStr");
+            builder.UseSqlServer(ConnStr)
+                .LogTo(message => Debug.WriteLine(message));
+            options = builder.Options;
+        }
+        async void CreateForDB()
+        {
+            using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+            {
+                MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
+                MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
+                context.Users.AddRange(user1, user);
+                 await context.SaveChangesAsync();
+                MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
+                MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
+                context.Tasks.AddRange(task1, task);
+                await context.SaveChangesAsync();
+                Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user, UserId = user.Id };
+                Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
+                context.PomodoroSettings.AddRange(setting, setting1);
+                await context.SaveChangesAsync();
+            }
+            
+                
+        }
+        async void CheckDB()
+        {
+            using (var connection = new SqlConnection(ConnStr))
+            {
+                string query = "Select * from Users";
+                var b = await connection.QueryAsync<MyUser>(query);
+                foreach (var item in b)
+                {
+                    MessageBox.Show($"{item.Login} - {item.Password}");
+                }
+            }
+        }
+        //</DataBase>----------------------------------------------------------------------------
         private void btnReport_Click(object sender, EventArgs e)
         {
             FormReport formReport = new FormReport();

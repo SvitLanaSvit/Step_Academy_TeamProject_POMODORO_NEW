@@ -12,10 +12,11 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\pba17\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\pba17\\.nuget\\packages"
+      "C:\\Users\\artuo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\artuo\\.nuget\\packages"
     ],
     "configProperties": {
+      "System.Reflection.NullabilityInfoContext.IsSupported": true,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }
