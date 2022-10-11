@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "LE+CU9+D5uZkMZ6Tp7ycOMZ8cQJR/kfLr50V3R2AezSRvbydEYWJ6ofbtN2q0G5vD4wPgOlMVlA09hnbe34zfQ==",
+  "dgSpecHash": "QBAin1BqR68TguWA1V3gfms1Kq73GReyUToAmwc+dUcA6f3BVdOcNZK05bbgOerf6nfdDg5ADD59xJQMgLS4EQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+  "projectFilePath": "C:\\Users\\pba17\\Source\\Repos\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Svitlana\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
-    "C:\\Users\\Svitlana\\.nuget\\packages\\livecharts.winforms\\0.9.7.1\\livecharts.winforms.0.9.7.1.nupkg.sha512",
-    "C:\\Users\\Svitlana\\.nuget\\packages\\livecharts.winforms.netcore3\\0.9.7\\livecharts.winforms.netcore3.0.9.7.nupkg.sha512",
-    "C:\\Users\\Svitlana\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
-    "C:\\Users\\Svitlana\\.nuget\\packages\\realtaiizor\\3.7.8.8\\realtaiizor.3.7.8.8.nupkg.sha512",
-    "C:\\Users\\Svitlana\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+    "C:\\Users\\pba17\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
+    "C:\\Users\\pba17\\.nuget\\packages\\livecharts.winforms\\0.9.7.1\\livecharts.winforms.0.9.7.1.nupkg.sha512",
+    "C:\\Users\\pba17\\.nuget\\packages\\livecharts.winforms.netcore3\\0.9.7\\livecharts.winforms.netcore3.0.9.7.nupkg.sha512",
+    "C:\\Users\\pba17\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
+    "C:\\Users\\pba17\\.nuget\\packages\\realtaiizor\\3.7.8.8\\realtaiizor.3.7.8.8.nupkg.sha512",
+    "C:\\Users\\pba17\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
   ],
   "logs": [
     {

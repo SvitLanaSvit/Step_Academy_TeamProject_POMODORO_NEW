@@ -236,19 +236,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Svitlana\\.nuget\\packages\\": {}
+    "C:\\Users\\pba17\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+      "projectUniqueName": "C:\\Users\\pba17\\Source\\Repos\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
       "projectName": "Pomodoro",
-      "projectPath": "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
-      "packagesPath": "C:\\Users\\Svitlana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\Pomodoro\\Pomodoro\\obj\\",
+      "projectPath": "C:\\Users\\pba17\\Source\\Repos\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+      "packagesPath": "C:\\Users\\pba17\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pba17\\Source\\Repos\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Svitlana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pba17\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -306,7 +306,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   },
