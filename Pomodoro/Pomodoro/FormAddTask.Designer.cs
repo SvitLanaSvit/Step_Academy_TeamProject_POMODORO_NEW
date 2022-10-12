@@ -41,9 +41,10 @@
             this.txtTask.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTask.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.txtTask.ForeColor = System.Drawing.Color.LightGray;
-            this.txtTask.Location = new System.Drawing.Point(12, 12);
+            this.txtTask.Location = new System.Drawing.Point(10, 9);
+            this.txtTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTask.Name = "txtTask";
-            this.txtTask.Size = new System.Drawing.Size(508, 27);
+            this.txtTask.Size = new System.Drawing.Size(444, 22);
             this.txtTask.TabIndex = 0;
             this.txtTask.Text = "What are you working for?";
             this.txtTask.UseWaitCursor = true;
@@ -51,9 +52,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 57);
+            this.label1.Location = new System.Drawing.Point(10, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.Size = new System.Drawing.Size(87, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Est Pomodoros";
             this.label1.UseWaitCursor = true;
@@ -68,11 +69,12 @@
             this.nudEstPomodoros.EnabledCalc = true;
             this.nudEstPomodoros.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nudEstPomodoros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.nudEstPomodoros.Location = new System.Drawing.Point(12, 80);
+            this.nudEstPomodoros.Location = new System.Drawing.Point(10, 60);
+            this.nudEstPomodoros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudEstPomodoros.Max = 100;
             this.nudEstPomodoros.Min = 0;
             this.nudEstPomodoros.Name = "nudEstPomodoros";
-            this.nudEstPomodoros.Size = new System.Drawing.Size(109, 27);
+            this.nudEstPomodoros.Size = new System.Drawing.Size(95, 27);
             this.nudEstPomodoros.TabIndex = 2;
             this.nudEstPomodoros.Text = "foxNumeric1";
             this.nudEstPomodoros.UseWaitCursor = true;
@@ -87,10 +89,11 @@
             this.btnOKAddTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOKAddTask.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnOKAddTask.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnOKAddTask.Location = new System.Drawing.Point(12, 156);
+            this.btnOKAddTask.Location = new System.Drawing.Point(10, 117);
+            this.btnOKAddTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOKAddTask.Name = "btnOKAddTask";
             this.btnOKAddTask.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.btnOKAddTask.Size = new System.Drawing.Size(150, 50);
+            this.btnOKAddTask.Size = new System.Drawing.Size(131, 38);
             this.btnOKAddTask.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnOKAddTask.TabIndex = 3;
             this.btnOKAddTask.Text = "OK";
@@ -107,10 +110,11 @@
             this.btnCancelAddTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelAddTask.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnCancelAddTask.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnCancelAddTask.Location = new System.Drawing.Point(370, 156);
+            this.btnCancelAddTask.Location = new System.Drawing.Point(324, 117);
+            this.btnCancelAddTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelAddTask.Name = "btnCancelAddTask";
             this.btnCancelAddTask.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.btnCancelAddTask.Size = new System.Drawing.Size(150, 50);
+            this.btnCancelAddTask.Size = new System.Drawing.Size(131, 38);
             this.btnCancelAddTask.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnCancelAddTask.TabIndex = 4;
             this.btnCancelAddTask.Text = "Cancel";
@@ -120,14 +124,17 @@
             // 
             // FormAddTask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 228);
+            this.ClientSize = new System.Drawing.Size(466, 171);
             this.Controls.Add(this.btnCancelAddTask);
             this.Controls.Add(this.btnOKAddTask);
             this.Controls.Add(this.nudEstPomodoros);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTask);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormAddTask";
             this.Text = "Add Task";
             this.UseWaitCursor = true;

@@ -59,10 +59,11 @@
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnLogin.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnLogin.Location = new System.Drawing.Point(1031, 12);
+            this.btnLogin.Location = new System.Drawing.Point(902, 9);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
-            this.btnLogin.Size = new System.Drawing.Size(90, 30);
+            this.btnLogin.Size = new System.Drawing.Size(79, 22);
             this.btnLogin.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
@@ -79,10 +80,11 @@
             this.btnSetting.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSetting.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnSetting.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnSetting.Location = new System.Drawing.Point(935, 12);
+            this.btnSetting.Location = new System.Drawing.Point(818, 9);
+            this.btnSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
-            this.btnSetting.Size = new System.Drawing.Size(90, 30);
+            this.btnSetting.Size = new System.Drawing.Size(79, 22);
             this.btnSetting.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnSetting.TabIndex = 2;
             this.btnSetting.Text = "Setting";
@@ -99,10 +101,11 @@
             this.btnReport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnReport.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnReport.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnReport.Location = new System.Drawing.Point(839, 12);
+            this.btnReport.Location = new System.Drawing.Point(734, 9);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReport.Name = "btnReport";
             this.btnReport.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
-            this.btnReport.Size = new System.Drawing.Size(90, 30);
+            this.btnReport.Size = new System.Drawing.Size(79, 22);
             this.btnReport.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnReport.TabIndex = 3;
             this.btnReport.Text = "Report";
@@ -118,9 +121,11 @@
             this.groupBoxTimer.Controls.Add(this.btnShortBreak);
             this.groupBoxTimer.Controls.Add(this.btnLongBreak);
             this.groupBoxTimer.Controls.Add(this.btnPomodoro);
-            this.groupBoxTimer.Location = new System.Drawing.Point(368, 90);
+            this.groupBoxTimer.Location = new System.Drawing.Point(322, 68);
+            this.groupBoxTimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxTimer.Name = "groupBoxTimer";
-            this.groupBoxTimer.Size = new System.Drawing.Size(400, 280);
+            this.groupBoxTimer.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxTimer.Size = new System.Drawing.Size(350, 210);
             this.groupBoxTimer.TabIndex = 5;
             this.groupBoxTimer.TabStop = false;
             // 
@@ -133,10 +138,11 @@
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStart.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnStart.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnStart.Location = new System.Drawing.Point(131, 208);
+            this.btnStart.Location = new System.Drawing.Point(115, 156);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStart.Name = "btnStart";
             this.btnStart.PrimaryColor = System.Drawing.Color.White;
-            this.btnStart.Size = new System.Drawing.Size(140, 50);
+            this.btnStart.Size = new System.Drawing.Size(122, 38);
             this.btnStart.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnStart.TabIndex = 11;
             this.btnStart.Text = "START";
@@ -149,9 +155,9 @@
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 55.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTimer.ForeColor = System.Drawing.Color.White;
-            this.lblTimer.Location = new System.Drawing.Point(67, 59);
+            this.lblTimer.Location = new System.Drawing.Point(59, 44);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(289, 123);
+            this.lblTimer.Size = new System.Drawing.Size(234, 99);
             this.lblTimer.TabIndex = 10;
             this.lblTimer.Text = "00:00";
             // 
@@ -164,10 +170,11 @@
             this.btnShortBreak.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnShortBreak.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnShortBreak.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnShortBreak.Location = new System.Drawing.Point(271, 26);
+            this.btnShortBreak.Location = new System.Drawing.Point(237, 20);
+            this.btnShortBreak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShortBreak.Name = "btnShortBreak";
             this.btnShortBreak.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(84)))), ((int)(((byte)(79)))));
-            this.btnShortBreak.Size = new System.Drawing.Size(120, 30);
+            this.btnShortBreak.Size = new System.Drawing.Size(105, 22);
             this.btnShortBreak.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnShortBreak.TabIndex = 9;
             this.btnShortBreak.Text = "Short Break";
@@ -184,10 +191,11 @@
             this.btnLongBreak.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLongBreak.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnLongBreak.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnLongBreak.Location = new System.Drawing.Point(145, 26);
+            this.btnLongBreak.Location = new System.Drawing.Point(127, 20);
+            this.btnLongBreak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLongBreak.Name = "btnLongBreak";
             this.btnLongBreak.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(84)))), ((int)(((byte)(79)))));
-            this.btnLongBreak.Size = new System.Drawing.Size(120, 30);
+            this.btnLongBreak.Size = new System.Drawing.Size(105, 22);
             this.btnLongBreak.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnLongBreak.TabIndex = 8;
             this.btnLongBreak.Text = "Long Break";
@@ -204,10 +212,11 @@
             this.btnPomodoro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPomodoro.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnPomodoro.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnPomodoro.Location = new System.Drawing.Point(19, 26);
+            this.btnPomodoro.Location = new System.Drawing.Point(17, 20);
+            this.btnPomodoro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPomodoro.Name = "btnPomodoro";
             this.btnPomodoro.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(84)))), ((int)(((byte)(79)))));
-            this.btnPomodoro.Size = new System.Drawing.Size(120, 30);
+            this.btnPomodoro.Size = new System.Drawing.Size(105, 22);
             this.btnPomodoro.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnPomodoro.TabIndex = 7;
             this.btnPomodoro.Text = "Pomodoro";
@@ -224,10 +233,11 @@
             this.btnAddTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddTask.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnAddTask.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnAddTask.Location = new System.Drawing.Point(368, 404);
+            this.btnAddTask.Location = new System.Drawing.Point(322, 303);
+            this.btnAddTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTask.Name = "btnAddTask";
             this.btnAddTask.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(74)))), ((int)(((byte)(69)))));
-            this.btnAddTask.Size = new System.Drawing.Size(400, 50);
+            this.btnAddTask.Size = new System.Drawing.Size(350, 38);
             this.btnAddTask.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnAddTask.TabIndex = 6;
             this.btnAddTask.Text = "+Add Task";
@@ -240,10 +250,11 @@
             this.lsbPlannedTasks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
             this.lsbPlannedTasks.ForeColor = System.Drawing.Color.White;
             this.lsbPlannedTasks.FormattingEnabled = true;
-            this.lsbPlannedTasks.ItemHeight = 22;
-            this.lsbPlannedTasks.Location = new System.Drawing.Point(12, 31);
+            this.lsbPlannedTasks.ItemHeight = 17;
+            this.lsbPlannedTasks.Location = new System.Drawing.Point(10, 23);
+            this.lsbPlannedTasks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbPlannedTasks.Name = "lsbPlannedTasks";
-            this.lsbPlannedTasks.Size = new System.Drawing.Size(330, 268);
+            this.lsbPlannedTasks.Size = new System.Drawing.Size(289, 191);
             this.lsbPlannedTasks.TabIndex = 8;
             // 
             // gpbListPlanned
@@ -258,11 +269,12 @@
             this.gpbListPlanned.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gpbListPlanned.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.gpbListPlanned.HeaderColor = System.Drawing.Color.White;
-            this.gpbListPlanned.Location = new System.Drawing.Point(12, 90);
-            this.gpbListPlanned.MinimumSize = new System.Drawing.Size(136, 50);
+            this.gpbListPlanned.Location = new System.Drawing.Point(10, 68);
+            this.gpbListPlanned.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbListPlanned.MinimumSize = new System.Drawing.Size(119, 38);
             this.gpbListPlanned.Name = "gpbListPlanned";
-            this.gpbListPlanned.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.gpbListPlanned.Size = new System.Drawing.Size(350, 364);
+            this.gpbListPlanned.Padding = new System.Windows.Forms.Padding(4, 21, 4, 4);
+            this.gpbListPlanned.Size = new System.Drawing.Size(306, 273);
             this.gpbListPlanned.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.gpbListPlanned.TabIndex = 9;
             this.gpbListPlanned.Text = "Planned Tasks";
@@ -288,9 +300,10 @@
             this.dungeonComboBox1.HoverSelectionColor = System.Drawing.Color.Empty;
             this.dungeonComboBox1.IntegralHeight = false;
             this.dungeonComboBox1.ItemHeight = 20;
-            this.dungeonComboBox1.Location = new System.Drawing.Point(12, 314);
+            this.dungeonComboBox1.Location = new System.Drawing.Point(10, 236);
+            this.dungeonComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dungeonComboBox1.Name = "dungeonComboBox1";
-            this.dungeonComboBox1.Size = new System.Drawing.Size(330, 26);
+            this.dungeonComboBox1.Size = new System.Drawing.Size(289, 26);
             this.dungeonComboBox1.StartIndex = 0;
             this.dungeonComboBox1.TabIndex = 9;
             // 
@@ -306,11 +319,12 @@
             this.gpbCurrentTasks.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gpbCurrentTasks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.gpbCurrentTasks.HeaderColor = System.Drawing.Color.White;
-            this.gpbCurrentTasks.Location = new System.Drawing.Point(783, 90);
-            this.gpbCurrentTasks.MinimumSize = new System.Drawing.Size(136, 50);
+            this.gpbCurrentTasks.Location = new System.Drawing.Point(685, 68);
+            this.gpbCurrentTasks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbCurrentTasks.MinimumSize = new System.Drawing.Size(119, 38);
             this.gpbCurrentTasks.Name = "gpbCurrentTasks";
-            this.gpbCurrentTasks.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.gpbCurrentTasks.Size = new System.Drawing.Size(350, 364);
+            this.gpbCurrentTasks.Padding = new System.Windows.Forms.Padding(4, 21, 4, 4);
+            this.gpbCurrentTasks.Size = new System.Drawing.Size(306, 273);
             this.gpbCurrentTasks.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.gpbCurrentTasks.TabIndex = 10;
             this.gpbCurrentTasks.Text = "Current Tasks";
@@ -336,9 +350,10 @@
             this.dungeonComboBox2.HoverSelectionColor = System.Drawing.Color.Empty;
             this.dungeonComboBox2.IntegralHeight = false;
             this.dungeonComboBox2.ItemHeight = 20;
-            this.dungeonComboBox2.Location = new System.Drawing.Point(12, 314);
+            this.dungeonComboBox2.Location = new System.Drawing.Point(10, 236);
+            this.dungeonComboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dungeonComboBox2.Name = "dungeonComboBox2";
-            this.dungeonComboBox2.Size = new System.Drawing.Size(330, 26);
+            this.dungeonComboBox2.Size = new System.Drawing.Size(289, 26);
             this.dungeonComboBox2.StartIndex = 0;
             this.dungeonComboBox2.TabIndex = 9;
             // 
@@ -347,10 +362,11 @@
             this.lsbCurrentTasks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
             this.lsbCurrentTasks.ForeColor = System.Drawing.Color.White;
             this.lsbCurrentTasks.FormattingEnabled = true;
-            this.lsbCurrentTasks.ItemHeight = 22;
-            this.lsbCurrentTasks.Location = new System.Drawing.Point(12, 31);
+            this.lsbCurrentTasks.ItemHeight = 17;
+            this.lsbCurrentTasks.Location = new System.Drawing.Point(10, 23);
+            this.lsbCurrentTasks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbCurrentTasks.Name = "lsbCurrentTasks";
-            this.lsbCurrentTasks.Size = new System.Drawing.Size(330, 268);
+            this.lsbCurrentTasks.Size = new System.Drawing.Size(289, 191);
             this.lsbCurrentTasks.TabIndex = 8;
             // 
             // aloneProgressBar1
@@ -358,11 +374,12 @@
             this.aloneProgressBar1.BackColor = System.Drawing.Color.Maroon;
             this.aloneProgressBar1.BackgroundColor = System.Drawing.Color.White;
             this.aloneProgressBar1.BorderColor = System.Drawing.Color.Maroon;
-            this.aloneProgressBar1.Location = new System.Drawing.Point(15, 69);
+            this.aloneProgressBar1.Location = new System.Drawing.Point(13, 52);
+            this.aloneProgressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.aloneProgressBar1.Maximum = 100;
             this.aloneProgressBar1.Minimum = 0;
             this.aloneProgressBar1.Name = "aloneProgressBar1";
-            this.aloneProgressBar1.Size = new System.Drawing.Size(1110, 5);
+            this.aloneProgressBar1.Size = new System.Drawing.Size(971, 4);
             this.aloneProgressBar1.Stripes = System.Drawing.Color.White;
             this.aloneProgressBar1.TabIndex = 12;
             this.aloneProgressBar1.Text = "aloneProgressBar1";
@@ -370,10 +387,10 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(84)))), ((int)(((byte)(79)))));
-            this.ClientSize = new System.Drawing.Size(1133, 498);
+            this.ClientSize = new System.Drawing.Size(991, 374);
             this.Controls.Add(this.aloneProgressBar1);
             this.Controls.Add(this.gpbCurrentTasks);
             this.Controls.Add(this.gpbListPlanned);
@@ -382,6 +399,9 @@
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.btnLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POMODORO";

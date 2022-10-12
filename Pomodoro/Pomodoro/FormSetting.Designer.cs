@@ -52,9 +52,11 @@
             this.gpbTimeMinutes.Controls.Add(this.label1);
             this.gpbTimeMinutes.Controls.Add(this.nudPomodoro);
             this.gpbTimeMinutes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gpbTimeMinutes.Location = new System.Drawing.Point(12, 12);
+            this.gpbTimeMinutes.Location = new System.Drawing.Point(10, 9);
+            this.gpbTimeMinutes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbTimeMinutes.Name = "gpbTimeMinutes";
-            this.gpbTimeMinutes.Size = new System.Drawing.Size(508, 125);
+            this.gpbTimeMinutes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbTimeMinutes.Size = new System.Drawing.Size(444, 94);
             this.gpbTimeMinutes.TabIndex = 0;
             this.gpbTimeMinutes.TabStop = false;
             this.gpbTimeMinutes.Text = "Time (minutes)";
@@ -63,9 +65,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(358, 31);
+            this.label3.Location = new System.Drawing.Point(313, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 20);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Short Break";
             // 
@@ -79,11 +81,12 @@
             this.nudShortBreak.EnabledCalc = true;
             this.nudShortBreak.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nudShortBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.nudShortBreak.Location = new System.Drawing.Point(357, 60);
+            this.nudShortBreak.Location = new System.Drawing.Point(312, 45);
+            this.nudShortBreak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudShortBreak.Max = 100;
             this.nudShortBreak.Min = 0;
             this.nudShortBreak.Name = "nudShortBreak";
-            this.nudShortBreak.Size = new System.Drawing.Size(130, 27);
+            this.nudShortBreak.Size = new System.Drawing.Size(114, 27);
             this.nudShortBreak.TabIndex = 4;
             this.nudShortBreak.Text = "foxNumeric3";
             this.nudShortBreak.Value = 0;
@@ -92,9 +95,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(192, 31);
+            this.label2.Location = new System.Drawing.Point(168, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(66, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Long Break";
             // 
@@ -108,11 +111,12 @@
             this.nudLongBreak.EnabledCalc = true;
             this.nudLongBreak.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nudLongBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.nudLongBreak.Location = new System.Drawing.Point(192, 60);
+            this.nudLongBreak.Location = new System.Drawing.Point(168, 45);
+            this.nudLongBreak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudLongBreak.Max = 100;
             this.nudLongBreak.Min = 0;
             this.nudLongBreak.Name = "nudLongBreak";
-            this.nudLongBreak.Size = new System.Drawing.Size(130, 27);
+            this.nudLongBreak.Size = new System.Drawing.Size(114, 27);
             this.nudLongBreak.TabIndex = 2;
             this.nudLongBreak.Text = "foxNumeric2";
             this.nudLongBreak.Value = 0;
@@ -121,9 +125,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(21, 31);
+            this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.Size = new System.Drawing.Size(64, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pomodoro";
             // 
@@ -137,11 +141,12 @@
             this.nudPomodoro.EnabledCalc = true;
             this.nudPomodoro.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nudPomodoro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.nudPomodoro.Location = new System.Drawing.Point(20, 60);
+            this.nudPomodoro.Location = new System.Drawing.Point(18, 45);
+            this.nudPomodoro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudPomodoro.Max = 100;
             this.nudPomodoro.Min = 0;
             this.nudPomodoro.Name = "nudPomodoro";
-            this.nudPomodoro.Size = new System.Drawing.Size(130, 27);
+            this.nudPomodoro.Size = new System.Drawing.Size(114, 27);
             this.nudPomodoro.TabIndex = 0;
             this.nudPomodoro.Text = "foxNumeric1";
             this.nudPomodoro.Value = 0;
@@ -150,9 +155,11 @@
             // 
             this.gpbAlarmSound.Controls.Add(this.dungeonComboBox1);
             this.gpbAlarmSound.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gpbAlarmSound.Location = new System.Drawing.Point(12, 143);
+            this.gpbAlarmSound.Location = new System.Drawing.Point(10, 107);
+            this.gpbAlarmSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbAlarmSound.Name = "gpbAlarmSound";
-            this.gpbAlarmSound.Size = new System.Drawing.Size(508, 125);
+            this.gpbAlarmSound.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbAlarmSound.Size = new System.Drawing.Size(444, 94);
             this.gpbAlarmSound.TabIndex = 1;
             this.gpbAlarmSound.TabStop = false;
             this.gpbAlarmSound.Text = "Alarm Sound";
@@ -178,9 +185,10 @@
             this.dungeonComboBox1.HoverSelectionColor = System.Drawing.Color.Empty;
             this.dungeonComboBox1.IntegralHeight = false;
             this.dungeonComboBox1.ItemHeight = 20;
-            this.dungeonComboBox1.Location = new System.Drawing.Point(192, 53);
+            this.dungeonComboBox1.Location = new System.Drawing.Point(168, 40);
+            this.dungeonComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dungeonComboBox1.Name = "dungeonComboBox1";
-            this.dungeonComboBox1.Size = new System.Drawing.Size(295, 26);
+            this.dungeonComboBox1.Size = new System.Drawing.Size(259, 26);
             this.dungeonComboBox1.StartIndex = 0;
             this.dungeonComboBox1.TabIndex = 0;
             // 
@@ -193,10 +201,11 @@
             this.btnOkSetting.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOkSetting.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnOkSetting.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnOkSetting.Location = new System.Drawing.Point(12, 375);
+            this.btnOkSetting.Location = new System.Drawing.Point(10, 281);
+            this.btnOkSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOkSetting.Name = "btnOkSetting";
             this.btnOkSetting.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.btnOkSetting.Size = new System.Drawing.Size(150, 50);
+            this.btnOkSetting.Size = new System.Drawing.Size(131, 38);
             this.btnOkSetting.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnOkSetting.TabIndex = 2;
             this.btnOkSetting.Text = "OK";
@@ -212,10 +221,11 @@
             this.btnCancelSetting.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelSetting.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.btnCancelSetting.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnCancelSetting.Location = new System.Drawing.Point(369, 375);
+            this.btnCancelSetting.Location = new System.Drawing.Point(323, 281);
+            this.btnCancelSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelSetting.Name = "btnCancelSetting";
             this.btnCancelSetting.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.btnCancelSetting.Size = new System.Drawing.Size(150, 50);
+            this.btnCancelSetting.Size = new System.Drawing.Size(131, 38);
             this.btnCancelSetting.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.btnCancelSetting.TabIndex = 3;
             this.btnCancelSetting.Text = "Cancel";
@@ -224,13 +234,16 @@
             // 
             // FormSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 453);
+            this.ClientSize = new System.Drawing.Size(466, 340);
             this.Controls.Add(this.btnCancelSetting);
             this.Controls.Add(this.btnOkSetting);
             this.Controls.Add(this.gpbAlarmSound);
             this.Controls.Add(this.gpbTimeMinutes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Timer Setting";

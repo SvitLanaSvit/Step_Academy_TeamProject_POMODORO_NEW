@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace Pomodoro
 {
-    public partial class FormLogin : Form
+    public partial class FormRegistration : Form
     {
-        public FormLogin()
+        public FormRegistration()
         {
             InitializeComponent();
         }
 
         private void btnSignInNewUser_Click(object sender, EventArgs e)
         {
-            if(new FormRegistration().ShowDialog() == DialogResult.OK)
-            {
-                this.Close();
-            }
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
