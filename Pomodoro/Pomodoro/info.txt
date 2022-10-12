@@ -1,0 +1,1 @@
+﻿1. Классы для бд - MyTask, MyUser, Settings.
