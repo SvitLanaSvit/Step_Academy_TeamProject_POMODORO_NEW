@@ -30,7 +30,6 @@ namespace Pomodoro
         private void FormMain_Load(object sender, EventArgs e)
         {
             StartDB();
-            CheckDB();
             //CreateForDB();
             lblTimer.Text = "25:00";
             this.BackColor = Color.FromArgb(215, 84, 79);
