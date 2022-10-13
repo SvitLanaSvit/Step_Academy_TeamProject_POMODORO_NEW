@@ -95,6 +95,7 @@
             this.btnSignIn.Text = "Sign In";
             this.btnSignIn.TextColor = System.Drawing.Color.White;
             this.btnSignIn.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // btnForgotPass
             // 

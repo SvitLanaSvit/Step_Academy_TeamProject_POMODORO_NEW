@@ -36,7 +36,7 @@
             this.textConfirmUserPassword = new System.Windows.Forms.TextBox();
             this.txtSecretTask = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAnswerSecretTask = new System.Windows.Forms.TextBox();
             this.btnSignInNewUser = new ReaLTaiizor.Controls.HopeRoundButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -115,13 +115,13 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Answer on secret task";
             // 
-            // textBox2
+            // txtAnswerSecretTask
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 63);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 23);
-            this.textBox2.TabIndex = 15;
+            this.txtAnswerSecretTask.Location = new System.Drawing.Point(6, 63);
+            this.txtAnswerSecretTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAnswerSecretTask.Name = "txtAnswerSecretTask";
+            this.txtAnswerSecretTask.Size = new System.Drawing.Size(177, 23);
+            this.txtAnswerSecretTask.TabIndex = 15;
             // 
             // btnSignInNewUser
             // 
@@ -146,7 +146,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtAnswerSecretTask);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSecretTask);
             this.groupBox1.Location = new System.Drawing.Point(12, 136);
@@ -190,7 +190,7 @@
         private TextBox textConfirmUserPassword;
         private TextBox txtSecretTask;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox txtAnswerSecretTask;
         private ReaLTaiizor.Controls.HopeRoundButton btnSignInNewUser;
         private GroupBox groupBox1;
     }

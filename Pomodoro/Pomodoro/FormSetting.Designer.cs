@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nudPomodoro = new ReaLTaiizor.Controls.FoxNumeric();
             this.gpbAlarmSound = new System.Windows.Forms.GroupBox();
-            this.dungeonComboBox1 = new ReaLTaiizor.Controls.DungeonComboBox();
+            this.musicComboBox = new ReaLTaiizor.Controls.DungeonComboBox();
             this.btnOkSetting = new ReaLTaiizor.Controls.HopeRoundButton();
             this.btnCancelSetting = new ReaLTaiizor.Controls.HopeRoundButton();
             this.gpbTimeMinutes.SuspendLayout();
@@ -153,7 +153,7 @@
             // 
             // gpbAlarmSound
             // 
-            this.gpbAlarmSound.Controls.Add(this.dungeonComboBox1);
+            this.gpbAlarmSound.Controls.Add(this.musicComboBox);
             this.gpbAlarmSound.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gpbAlarmSound.Location = new System.Drawing.Point(10, 107);
             this.gpbAlarmSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -164,33 +164,33 @@
             this.gpbAlarmSound.TabStop = false;
             this.gpbAlarmSound.Text = "Alarm Sound";
             // 
-            // dungeonComboBox1
+            // musicComboBox
             // 
-            this.dungeonComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.dungeonComboBox1.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(132)))), ((int)(((byte)(85)))));
-            this.dungeonComboBox1.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(108)))), ((int)(((byte)(57)))));
-            this.dungeonComboBox1.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(241)))), ((int)(((byte)(240)))));
-            this.dungeonComboBox1.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.dungeonComboBox1.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(237)))), ((int)(((byte)(236)))));
-            this.dungeonComboBox1.ColorF = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dungeonComboBox1.ColorG = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dungeonComboBox1.ColorH = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.dungeonComboBox1.ColorI = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.dungeonComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.dungeonComboBox1.DropDownHeight = 100;
-            this.dungeonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dungeonComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dungeonComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
-            this.dungeonComboBox1.FormattingEnabled = true;
-            this.dungeonComboBox1.HoverSelectionColor = System.Drawing.Color.Empty;
-            this.dungeonComboBox1.IntegralHeight = false;
-            this.dungeonComboBox1.ItemHeight = 20;
-            this.dungeonComboBox1.Location = new System.Drawing.Point(168, 40);
-            this.dungeonComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dungeonComboBox1.Name = "dungeonComboBox1";
-            this.dungeonComboBox1.Size = new System.Drawing.Size(259, 26);
-            this.dungeonComboBox1.StartIndex = 0;
-            this.dungeonComboBox1.TabIndex = 0;
+            this.musicComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.musicComboBox.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(132)))), ((int)(((byte)(85)))));
+            this.musicComboBox.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(108)))), ((int)(((byte)(57)))));
+            this.musicComboBox.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(241)))), ((int)(((byte)(240)))));
+            this.musicComboBox.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.musicComboBox.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(237)))), ((int)(((byte)(236)))));
+            this.musicComboBox.ColorF = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.musicComboBox.ColorG = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.musicComboBox.ColorH = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.musicComboBox.ColorI = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.musicComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.musicComboBox.DropDownHeight = 100;
+            this.musicComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.musicComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.musicComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.musicComboBox.FormattingEnabled = true;
+            this.musicComboBox.HoverSelectionColor = System.Drawing.Color.Empty;
+            this.musicComboBox.IntegralHeight = false;
+            this.musicComboBox.ItemHeight = 20;
+            this.musicComboBox.Location = new System.Drawing.Point(168, 40);
+            this.musicComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.musicComboBox.Name = "musicComboBox";
+            this.musicComboBox.Size = new System.Drawing.Size(259, 26);
+            this.musicComboBox.StartIndex = 0;
+            this.musicComboBox.TabIndex = 0;
             // 
             // btnOkSetting
             // 
@@ -211,6 +211,7 @@
             this.btnOkSetting.Text = "OK";
             this.btnOkSetting.TextColor = System.Drawing.Color.White;
             this.btnOkSetting.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnOkSetting.Click += new System.EventHandler(this.btnOkSetting_Click);
             // 
             // btnCancelSetting
             // 
@@ -231,6 +232,7 @@
             this.btnCancelSetting.Text = "Cancel";
             this.btnCancelSetting.TextColor = System.Drawing.Color.White;
             this.btnCancelSetting.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnCancelSetting.Click += new System.EventHandler(this.btnCancelSetting_Click);
             // 
             // FormSetting
             // 
@@ -264,7 +266,7 @@
         private Label label1;
         private ReaLTaiizor.Controls.FoxNumeric nudPomodoro;
         private GroupBox gpbAlarmSound;
-        private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox1;
+        private ReaLTaiizor.Controls.DungeonComboBox musicComboBox;
         private ReaLTaiizor.Controls.HopeRoundButton btnOkSetting;
         private ReaLTaiizor.Controls.HopeRoundButton btnCancelSetting;
     }

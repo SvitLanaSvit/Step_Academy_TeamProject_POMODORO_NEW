@@ -23,31 +23,53 @@ namespace Pomodoro
         //Timer------------------------------------------------------------------------------
         Timer timer = null!;
         int m, s;
+        int currentAction;
         bool isRunning = false;
         static string path = "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\dodomu.wav";
         SoundPlayer player = new SoundPlayer(path);
-        
+        internal MyUser currentUser = new ();
+        internal Settings currentSetings;
         private void FormMain_Load(object sender, EventArgs e)
         {
             StartDB();
-            CheckDB();
+            //CheckDB();
             //CreateForDB();
-            lblTimer.Text = "25:00";
-            this.BackColor = Color.FromArgb(215, 84, 79);
+            
+            FormLogin formLogin = new FormLogin(options);
+            formLogin.Owner = this;
+            if(formLogin.ShowDialog() == DialogResult.OK)
+            {
+                using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+                {
+                    //MessageBox.Show($"{currentUser.Login}, {currentUser.Password}");
+                    //lblTimer.Text = "25:00";
+                    currentAction = 1;
+                    currentSetings = context.PomodoroSettings.First(t => t.UserId == currentUser.Id);
+                    m = currentSetings.PomodoroTime;
+                    s = 0;
+                    lblTimer.Text = $"{m}:00";
+                    this.BackColor = Color.FromArgb(215, 84, 79);
 
-            timer = new Timer();
-            timer.Interval = 1000;
-            timer.Tick += Timer_Tick;
-           
-            if (lblTimer.Text.Contains("25:00"))
-                m = 25; s = 0;
-            if (lblTimer.Text.Contains("15:00"))
-                m = 15; s = 0;
-            if (lblTimer.Text.Contains("05:00"))
-                m = 5; s = 0;          
+                    timer = new Timer();
+                    timer.Interval = 1000;
+                    timer.Tick += Timer_Tick;
 
-            aloneProgressBar1.Value = 0;
-            aloneProgressBar1.Maximum = m * 60 + s;
+                    //if (lblTimer.Text.Contains("25:00"))
+                    //    m = 25; s = 0;
+                    //if (lblTimer.Text.Contains("15:00"))
+                    //    m = 15; s = 0;
+                    //if (lblTimer.Text.Contains("05:00"))
+                    //    m = 5; s = 0;
+
+                    aloneProgressBar1.Value = 0;
+                    aloneProgressBar1.Maximum = m * 60 + s;
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -90,11 +112,27 @@ namespace Pomodoro
 
         private void btnPomodoro_Click(object sender, EventArgs e)
         {
-            player?.Stop();
+            string message = "Are you sure you want to switch?";
+            string title = "Close window";
+            MessageBoxButtons button = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, button);
+            if (result == DialogResult.Yes)
+            {
 
+                m = currentSetings.PomodoroTime;
+                s = 0;
+
+                aloneProgressBar1.Maximum = m * 60 + s;
+
+                Application.DoEvents();
+            }
+            currentAction = 1;
+            btnStart.Text = "Start";
+            player?.Stop();
+            timer?.Stop();
             aloneProgressBar1.Value = 0;
 
-            lblTimer.Text = "25:00";
+            lblTimer.Text = $"{m}:00";
             this.BackColor = Color.FromArgb(215, 84, 79);
 
             btnReport.PrimaryColor = Color.FromArgb(221, 109, 105);
@@ -116,29 +154,30 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.Maroon;
             aloneProgressBar1.BorderColor = Color.Maroon;
 
-            timer?.Stop();
+            
+        }
+
+        private void btnLongBreak_Click(object sender, EventArgs e)
+        {
+           
             string message = "Are you sure you want to switch?";
             string title = "Close window";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, button);
             if (result == DialogResult.Yes)
             {
-                m = 25;
+                m = currentSetings.LongBreakTime;
                 s = 0;
-
                 aloneProgressBar1.Maximum = m * 60 + s;
-
                 Application.DoEvents();
             }
-        }
-
-        private void btnLongBreak_Click(object sender, EventArgs e)
-        {
+            currentAction = 2;
+            btnStart.Text = "Start";
             player?.Stop();
-
+            timer?.Stop();
             aloneProgressBar1.Value = 0;
 
-            lblTimer.Text = "15:00";
+            lblTimer.Text = $"{m}:00";
             this.BackColor = Color.FromArgb(69, 124, 163);
 
             btnReport.PrimaryColor = Color.FromArgb(85, 153, 201);
@@ -159,26 +198,29 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.FromArgb(45, 81, 107);
             aloneProgressBar1.BorderColor = Color.FromArgb(45, 81, 107);
 
+            
+        }
+
+        private void btnShortBreak_Click(object sender, EventArgs e)
+        {
             string message = "Are you sure you want to switch?";
             string title = "Close window";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, button);
             if (result == DialogResult.Yes)
             {
-                m = 15;
+                m = currentSetings.ShortBreakTime;
                 s = 0;
                 aloneProgressBar1.Maximum = m * 60 + s;
                 Application.DoEvents();
             }
-        }
-
-        private void btnShortBreak_Click(object sender, EventArgs e)
-        {
+            currentAction = 3;
+            btnStart.Text = "Start";
             player?.Stop();
-
+            timer?.Stop();
             aloneProgressBar1.Value = 0;
 
-            lblTimer.Text = "05:00";
+            lblTimer.Text = $"{m}:00";
             this.BackColor = Color.FromArgb(76, 145, 149);
 
             btnReport.PrimaryColor = Color.FromArgb(95, 181, 186);
@@ -199,17 +241,7 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.FromArgb(51, 97, 99);
             aloneProgressBar1.BorderColor = Color.FromArgb(51, 97, 99);
 
-            string message = "Are you sure you want to switch?";
-            string title = "Close window";
-            MessageBoxButtons button = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, button);
-            if (result == DialogResult.Yes)
-            {
-                m = 5;
-                s = 0;
-                aloneProgressBar1.Maximum = m * 60 + s;
-                Application.DoEvents();
-            }
+            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -235,6 +267,7 @@ namespace Pomodoro
             }
         }
         //Timer------------------------------------------------------------------------------
+
         //<DataBase>----------------------------------------------------------------------------
         string ConnStr;
         DbContextOptions<MyPomodoroProjectContext> options = null!;
@@ -296,19 +329,39 @@ namespace Pomodoro
 
             }
         }
-
+        //<Settings>----------------------------------------------------------------------------
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            FormSetting formSetting = new FormSetting();
+            FormSetting formSetting = new FormSetting(options, currentSetings.PomodoroTime, currentSetings.LongBreakTime, currentSetings.ShortBreakTime);
+            formSetting.Owner = this;
             if (formSetting.ShowDialog() == DialogResult.OK)
             {
-
+                using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+                {
+                    currentSetings = context.PomodoroSettings.First(t => t.Id == currentSetings.Id);
+                    if(currentAction == 1)
+                    {
+                        m = currentSetings.PomodoroTime;
+                        lblTimer.Text = $"{m.ToString("00")}:00";
+                    }
+                    else if (currentAction == 2)
+                    {
+                        m = currentSetings.LongBreakTime;
+                        lblTimer.Text = $"{m.ToString("00")}:00";
+                    }
+                    else if (currentAction == 3)
+                    {
+                        m = currentSetings.ShortBreakTime;
+                        lblTimer.Text = $"{m}:00";// ????
+                    }
+                }
             }
         }
+        //</Settings>----------------------------------------------------------------------------
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();
+            FormLogin formLogin = new FormLogin(options);
             if (formLogin.ShowDialog() == DialogResult.OK)
             {
 

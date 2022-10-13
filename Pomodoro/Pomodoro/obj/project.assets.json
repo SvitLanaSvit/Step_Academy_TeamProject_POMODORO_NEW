@@ -2640,19 +2640,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\artuo\\.nuget\\packages\\": {}
+    "C:\\Users\\mazur\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\artuo\\Source\\Repos\\SvitLanaSvit\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+      "projectUniqueName": "D:\\all\\Проекты\\Pomodoro\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
       "projectName": "Pomodoro",
-      "projectPath": "C:\\Users\\artuo\\Source\\Repos\\SvitLanaSvit\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
-      "packagesPath": "C:\\Users\\artuo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\artuo\\Source\\Repos\\SvitLanaSvit\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\obj\\",
+      "projectPath": "D:\\all\\Проекты\\Pomodoro\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+      "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
+      "outputPath": "D:\\all\\Проекты\\Pomodoro\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\artuo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
