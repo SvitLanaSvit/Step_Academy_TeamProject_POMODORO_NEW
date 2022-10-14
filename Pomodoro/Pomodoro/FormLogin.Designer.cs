@@ -116,6 +116,7 @@
             this.btnForgotPass.Text = "Forgot password?";
             this.btnForgotPass.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.btnForgotPass.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnForgotPass.Click += new System.EventHandler(this.btnForgotPass_Click);
             // 
             // btnSignInNewUser
             // 

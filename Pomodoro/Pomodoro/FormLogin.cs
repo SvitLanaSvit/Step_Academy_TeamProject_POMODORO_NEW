@@ -94,5 +94,11 @@ namespace Pomodoro
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnForgotPass_Click(object sender, EventArgs e)
+        {
+            FormForgotPassword formForgotPassword = new FormForgotPassword(options);
+            formForgotPassword.ShowDialog();
+        }
     }
 }

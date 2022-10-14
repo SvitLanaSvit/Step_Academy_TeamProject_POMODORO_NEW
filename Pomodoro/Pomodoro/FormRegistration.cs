@@ -41,6 +41,14 @@ namespace Pomodoro
 
                     using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                     {
+                        foreach (var item in context.Users)
+                        {
+                            if(txtUserName.Text == item.Login)
+                            {
+                                await context.SaveChangesAsync();
+                                throw new Exception("A user with the same name already exists!");
+                            }
+                        }
                         registerMyUser.Login = txtUserName.Text;
                         registerMyUser.Password = txtUserPassword.Text;
                         registerMyUser.SecretAsk = txtSecretTask.Text;
