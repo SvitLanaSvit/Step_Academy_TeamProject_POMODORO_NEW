@@ -12,10 +12,11 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Svitlana\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Svitlana\\.nuget\\packages"
+      "C:\\Users\\mazur\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mazur\\.nuget\\packages"
     ],
     "configProperties": {
+      "System.Reflection.NullabilityInfoContext.IsSupported": true,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }

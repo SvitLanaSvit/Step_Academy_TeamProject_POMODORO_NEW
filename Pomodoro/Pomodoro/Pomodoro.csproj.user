@@ -7,7 +7,13 @@
     <Compile Update="FormAddTask.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormReport.cs">
