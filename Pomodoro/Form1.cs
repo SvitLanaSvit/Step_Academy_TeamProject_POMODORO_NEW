@@ -473,9 +473,9 @@ namespace Pomodoro
                     using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                     {
                         DialogResult result = MessageBox.Show("Are you sure you want to finish task earlier?", "Finish", MessageBoxButtons.YesNo);
-                        MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                         if (result == DialogResult.Yes)
                         {
+                            MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                             myTask!.IsFinished = true;
                             //В отчёте нужно сохранить время, которое потребовалось чтобы завершить задачу преждевременно.
                             context.Update(myTask);
@@ -506,9 +506,9 @@ namespace Pomodoro
             using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete the task?", "Delete", MessageBoxButtons.YesNo);
-                MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                 if (result == DialogResult.Yes)
                 {
+                    MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                     context.Tasks.Remove(myTask!);
                     await context.SaveChangesAsync();
                 }
