@@ -494,7 +494,9 @@ namespace Pomodoro
                 {
                     MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                     myTask!.IsFinished = true;
-                    myTask!.WorkTime += currentSetings.PomodoroTime - m;
+                    if (myTask!.EatPomodoros == 0)
+                        myTask!.WorkTime += currentSetings.PomodoroTime - m;
+                    else myTask!.WorkTime += (myTask.EatPomodoros * currentSetings.PomodoroTime + m); 
                     context.Update(myTask);
                     await context.SaveChangesAsync();
                 }
