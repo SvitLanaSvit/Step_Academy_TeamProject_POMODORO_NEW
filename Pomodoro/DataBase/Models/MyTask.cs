@@ -10,8 +10,6 @@ namespace Pomodoro.DataBase.Models
 {
     public class MyTask
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public int MaxPomodoros { get; set; }

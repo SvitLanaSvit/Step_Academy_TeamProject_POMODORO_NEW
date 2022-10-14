@@ -494,7 +494,7 @@ namespace Pomodoro
                 {
                     MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
                     myTask!.IsFinished = true;
-                    //В отчёте нужно сохранить время, которое потребовалось чтобы завершить задачу преждевременно.
+                    myTask!.WorkTime += currentSetings.PomodoroTime - m;
                     context.Update(myTask);
                     await context.SaveChangesAsync();
                 }
@@ -522,13 +522,7 @@ namespace Pomodoro
             FormAddTask formAddTask = new FormAddTask(myTask);
             if (formAddTask.ShowDialog() == DialogResult.OK)
             {
-                //using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
-                //{
-                //    myTask.UserId = currentUser.Id;
-                //    myTask.User = currentUser;       
-                //    await context.Tasks.AddAsync(myTask);
-                //    await context.SaveChangesAsync();
-                //}
+
             }
         }
     }
