@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pomodoro.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,28 @@ namespace Pomodoro.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CurrentStates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PomodoroTime = table.Column<double>(type: "float", nullable: false),
+                    LongBreakTime = table.Column<double>(type: "float", nullable: false),
+                    ShortBreakTime = table.Column<double>(type: "float", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CurrentStates", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CurrentStates_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,8 +80,7 @@ namespace Pomodoro.Migrations
                     MaxPomodoros = table.Column<int>(type: "int", nullable: false),
                     EatPomodoros = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    IsCurrent = table.Column<bool>(type: "bit", nullable: false),
-                    IsFinished = table.Column<bool>(type: "bit", nullable: false),
+                    TaskState = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfFinish = table.Column<DateTime>(type: "datetime2", nullable: true),
                     WorkTime = table.Column<int>(type: "int", nullable: true)
                 },
@@ -75,9 +96,16 @@ namespace Pomodoro.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CurrentStates_UserId",
+                table: "CurrentStates",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PomodoroSettings_UserId",
                 table: "PomodoroSettings",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_UserId",
@@ -87,6 +115,9 @@ namespace Pomodoro.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CurrentStates");
+
             migrationBuilder.DropTable(
                 name: "PomodoroSettings");
 

@@ -12,8 +12,8 @@ using Pomodoro.DataBase.Context;
 namespace Pomodoro.Migrations
 {
     [DbContext(typeof(MyPomodoroProjectContext))]
-    [Migration("20221011221829_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221014190455_initialDB")]
+    partial class initialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,34 @@ namespace Pomodoro.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Pomodoro.DataBase.Models.CurrentState", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<double>("LongBreakTime")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PomodoroTime")
+                        .HasColumnType("float");
+
+                    b.Property<double>("ShortBreakTime")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("CurrentStates");
+                });
 
             modelBuilder.Entity("Pomodoro.DataBase.Models.MyTask", b =>
                 {
@@ -38,16 +66,14 @@ namespace Pomodoro.Migrations
                     b.Property<int>("EatPomodoros")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsCurrent")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsFinished")
-                        .HasColumnType("bit");
-
                     b.Property<int>("MaxPomodoros")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaskState")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -118,9 +144,21 @@ namespace Pomodoro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("PomodoroSettings");
+                });
+
+            modelBuilder.Entity("Pomodoro.DataBase.Models.CurrentState", b =>
+                {
+                    b.HasOne("Pomodoro.DataBase.Models.MyUser", "User")
+                        .WithOne("CurrentState")
+                        .HasForeignKey("Pomodoro.DataBase.Models.CurrentState", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Pomodoro.DataBase.Models.MyTask", b =>
@@ -136,20 +174,24 @@ namespace Pomodoro.Migrations
 
             modelBuilder.Entity("Pomodoro.DataBase.Models.Settings", b =>
                 {
-                    b.HasOne("Pomodoro.DataBase.Models.MyUser", "user")
-                        .WithMany("settings")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Pomodoro.DataBase.Models.MyUser", "User")
+                        .WithOne("Settings")
+                        .HasForeignKey("Pomodoro.DataBase.Models.Settings", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Pomodoro.DataBase.Models.MyUser", b =>
                 {
-                    b.Navigation("Tasks");
+                    b.Navigation("CurrentState")
+                        .IsRequired();
 
-                    b.Navigation("settings");
+                    b.Navigation("Settings")
+                        .IsRequired();
+
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }
