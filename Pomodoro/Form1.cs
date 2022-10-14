@@ -465,18 +465,7 @@ namespace Pomodoro
             }
             if (dungeonComboBox2.SelectedIndex == 2)
             {
-                    using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
-                    {
-                        DialogResult result = MessageBox.Show("Are you sure you want to finish task earlier?", "Finish", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
-                        {
-                            MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
-                            myTask!.IsFinished = true;
-                            //В отчёте нужно сохранить время, которое потребовалось чтобы завершить задачу преждевременно.
-                            context.Update(myTask);
-                            await context.SaveChangesAsync();
-                        }
-                    }
+                await FinishTaskEarlier(myTaskId); 
             }
             await UpdateAllListBoxes();
         }
@@ -493,6 +482,22 @@ namespace Pomodoro
                     await context.SaveChangesAsync();
                 }
                 else return;
+            }
+        }
+
+        private async Task FinishTaskEarlier(int myTaskId)
+        {
+            using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to finish task earlier?", "Finish", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
+                    myTask!.IsFinished = true;
+                    //В отчёте нужно сохранить время, которое потребовалось чтобы завершить задачу преждевременно.
+                    context.Update(myTask);
+                    await context.SaveChangesAsync();
+                }
             }
         }
         private async Task DeleteTask(int myTaskId)
