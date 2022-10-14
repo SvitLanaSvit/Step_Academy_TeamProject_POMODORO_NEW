@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogin = new ReaLTaiizor.Controls.HopeRoundButton();
+            this.btnLogOut = new ReaLTaiizor.Controls.HopeRoundButton();
             this.btnSetting = new ReaLTaiizor.Controls.HopeRoundButton();
             this.btnReport = new ReaLTaiizor.Controls.HopeRoundButton();
             this.groupBoxTimer = new System.Windows.Forms.GroupBox();
@@ -50,26 +50,26 @@
             this.gpbCurrentTasks.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnLogin
+            // btnLogOut
             // 
-            this.btnLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
-            this.btnLogin.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            this.btnLogin.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.btnLogin.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogin.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.btnLogin.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.btnLogin.Location = new System.Drawing.Point(902, 9);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
-            this.btnLogin.Size = new System.Drawing.Size(79, 22);
-            this.btnLogin.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
-            this.btnLogin.TabIndex = 1;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.TextColor = System.Drawing.Color.White;
-            this.btnLogin.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogOut.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
+            this.btnLogOut.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            this.btnLogOut.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.btnLogOut.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogOut.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.btnLogOut.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
+            this.btnLogOut.Location = new System.Drawing.Point(902, 9);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(109)))), ((int)(((byte)(105)))));
+            this.btnLogOut.Size = new System.Drawing.Size(79, 22);
+            this.btnLogOut.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
+            this.btnLogOut.TabIndex = 1;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.TextColor = System.Drawing.Color.White;
+            this.btnLogOut.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnSetting
             // 
@@ -398,7 +398,7 @@
             this.Controls.Add(this.groupBoxTimer);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnSetting);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnLogOut);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -416,7 +416,7 @@
 
         #endregion
 
-        private ReaLTaiizor.Controls.HopeRoundButton btnLogin;
+        private ReaLTaiizor.Controls.HopeRoundButton btnLogOut;
         private ReaLTaiizor.Controls.HopeRoundButton btnSetting;
         private ReaLTaiizor.Controls.HopeRoundButton btnReport;
         private GroupBox groupBoxTimer;

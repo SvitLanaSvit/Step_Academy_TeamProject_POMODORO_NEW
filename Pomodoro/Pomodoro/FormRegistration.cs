@@ -38,7 +38,7 @@ namespace Pomodoro
                     throw new Exception("Passwords do not match!");
                 else
                 {
-                   
+
                     using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                     {
                         registerMyUser.Login = txtUserName.Text;

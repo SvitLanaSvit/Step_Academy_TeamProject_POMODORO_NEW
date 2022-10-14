@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.Logging;
 using Pomodoro.DataBase.Context;
 using Pomodoro.DataBase.Models;
 using System;
@@ -7,7 +8,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,17 +20,25 @@ namespace Pomodoro
     {
         DbContextOptions<MyPomodoroProjectContext> options;
         MyUser user;
-        public FormLogin(DbContextOptions<MyPomodoroProjectContext> options)
+        string loginDocPath;
+
+        public FormLogin(DbContextOptions<MyPomodoroProjectContext> options, string loginDocPath)
         {
             InitializeComponent();
             this.options = options;
+            this.loginDocPath = loginDocPath;
             //this.user = new MyUser();
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSignInNewUser_Click(object sender, EventArgs e)
         {
             FormRegistration formRegistration = new FormRegistration(options);
-            if(formRegistration.ShowDialog() == DialogResult.OK)
+            if (formRegistration.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Registration completed successfully!");
             }
@@ -49,14 +60,23 @@ namespace Pomodoro
                     int searchCount = -1;
                     using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                     {
-                        
+
                         await context.Users.LoadAsync();
                         foreach (var item in context.Users)
                         {
-                            if(item.Login == txtUserName.Text && item.Password == txtUserPassword.Text)
+                            if (item.Login == txtUserName.Text && item.Password == txtUserPassword.Text)
                             {
                                 searchCount = 1;
                                 owner.currentUser = item;
+
+                                (string Login, string Password) loginData = new(item.Login, item.Password);
+                                using FileStream fs = new(loginDocPath, FileMode.Create);
+                                JsonSerializerOptions jsoptions = new()
+                                {
+                                    IncludeFields = true
+                                };
+                                JsonSerializer.Serialize(fs, loginData, jsoptions); //Local authentication
+
                                 break;
                             }
                         }

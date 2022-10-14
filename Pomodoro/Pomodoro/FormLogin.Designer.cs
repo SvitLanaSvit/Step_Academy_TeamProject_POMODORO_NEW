@@ -168,6 +168,7 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign In";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.gpbNewUser.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

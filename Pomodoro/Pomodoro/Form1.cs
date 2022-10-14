@@ -10,6 +10,7 @@ using Pomodoro.DataBase.Models;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using Microsoft.VisualBasic;
+using System.Text.Json;
 
 namespace Pomodoro
 {
@@ -18,8 +19,9 @@ namespace Pomodoro
         public FormMain()
         {
             InitializeComponent();
+            loginDocPath = "login.json";
         }
-        
+
         //Timer------------------------------------------------------------------------------
         Timer timer = null!;
         int m, s;
@@ -27,19 +29,72 @@ namespace Pomodoro
         bool isRunning = false;
         static string path = "C:\\Users\\Svitlana\\Programierung\\C#TeamWork_2022\\dodomu.wav";
         SoundPlayer player = new SoundPlayer(path);
-        internal MyUser currentUser = new ();
+        internal MyUser currentUser = new();
         internal Settings currentSetings;
+        string loginDocPath;
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             StartDB();
             //CheckDB();
             //CreateForDB();
-            
-            FormLogin formLogin = new FormLogin(options);
-            formLogin.Owner = this;
-            if(formLogin.ShowDialog() == DialogResult.OK)
+
+            try
             {
-                using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+                if (File.Exists(loginDocPath))  //Local authentication
+                {
+                    using FileStream fs = new(loginDocPath, FileMode.Open);
+                    JsonSerializerOptions jsoptions = new()
+                    {
+                        IncludeFields = true
+                    };
+                    (string Login, string Password) loginData = JsonSerializer.Deserialize<(string, string)>(fs, jsoptions);
+                    if (String.IsNullOrEmpty(loginData.Login) || String.IsNullOrEmpty(loginData.Password))
+                    {
+                        File.Delete(loginDocPath);
+                        MessageBox.Show($"Local authentication error.{Environment.NewLine}Authentication data is dropped!",
+                            "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int searchCount = -1;
+                        using (MyPomodoroProjectContext context = new(options))
+                        {
+                            context.Users.Load();
+                            foreach (var item in context.Users)
+                            {
+                                if (item.Login == loginData.Login && item.Password == loginData.Password)
+                                {
+                                    searchCount = 1;
+                                    this.currentUser = item;
+                                    break;
+                                }
+                            }
+                        }
+                        if (searchCount == -1)
+                        {
+                            File.Delete(loginDocPath);
+                            MessageBox.Show($"Local authentication error.{Environment.NewLine}Authentication data is dropped!", 
+                                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                File.Delete(loginDocPath);
+                MessageBox.Show(ex.Message + $"{Environment.NewLine}Authentication data is dropped!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            FormLogin formLogin = new FormLogin(options, loginDocPath);
+            formLogin.Owner = this;
+            if (formLogin.ShowDialog() == DialogResult.OK)
+            {
+                using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                 {
                     //MessageBox.Show($"{currentUser.Login}, {currentUser.Password}");
                     //lblTimer.Text = "25:00";
@@ -69,7 +124,6 @@ namespace Pomodoro
             {
                 this.Close();
             }
-            
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -102,8 +156,8 @@ namespace Pomodoro
                     lblTimer.Text = "00:00";
                     btnStart.Text = "Start";
                 }
-               
-                if (aloneProgressBar1.Value != m * 60 +s)
+
+                if (aloneProgressBar1.Value != m * 60 + s)
                     aloneProgressBar1.Value++;
 
                 lblTimer.Text = m.ToString("00") + ":" + s.ToString("00");
@@ -138,7 +192,7 @@ namespace Pomodoro
             btnReport.PrimaryColor = Color.FromArgb(221, 109, 105);
             btnReport.PrimaryColor = Color.FromArgb(221, 109, 105);
             btnSetting.PrimaryColor = Color.FromArgb(221, 109, 105);
-            btnLogin.PrimaryColor = Color.FromArgb(221, 109, 105);
+            btnLogOut.PrimaryColor = Color.FromArgb(221, 109, 105);
             groupBoxTimer.BackColor = Color.FromArgb(221, 109, 105);
             btnPomodoro.PrimaryColor = Color.FromArgb(215, 84, 79);
             btnLongBreak.PrimaryColor = Color.FromArgb(215, 84, 79);
@@ -154,12 +208,12 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.Maroon;
             aloneProgressBar1.BorderColor = Color.Maroon;
 
-            
+
         }
 
         private void btnLongBreak_Click(object sender, EventArgs e)
         {
-           
+
             string message = "Are you sure you want to switch?";
             string title = "Close window";
             MessageBoxButtons button = MessageBoxButtons.YesNo;
@@ -182,7 +236,7 @@ namespace Pomodoro
 
             btnReport.PrimaryColor = Color.FromArgb(85, 153, 201);
             btnSetting.PrimaryColor = Color.FromArgb(85, 153, 201);
-            btnLogin.PrimaryColor = Color.FromArgb(85, 153, 201);
+            btnLogOut.PrimaryColor = Color.FromArgb(85, 153, 201);
             groupBoxTimer.BackColor = Color.FromArgb(85, 153, 201);
             btnPomodoro.PrimaryColor = Color.FromArgb(69, 124, 163);
             btnLongBreak.PrimaryColor = Color.FromArgb(69, 124, 163);
@@ -198,7 +252,7 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.FromArgb(45, 81, 107);
             aloneProgressBar1.BorderColor = Color.FromArgb(45, 81, 107);
 
-            
+
         }
 
         private void btnShortBreak_Click(object sender, EventArgs e)
@@ -225,7 +279,7 @@ namespace Pomodoro
 
             btnReport.PrimaryColor = Color.FromArgb(95, 181, 186);
             btnSetting.PrimaryColor = Color.FromArgb(95, 181, 186);
-            btnLogin.PrimaryColor = Color.FromArgb(95, 181, 186);
+            btnLogOut.PrimaryColor = Color.FromArgb(95, 181, 186);
             groupBoxTimer.BackColor = Color.FromArgb(95, 181, 186);
             btnPomodoro.PrimaryColor = Color.FromArgb(76, 145, 149);
             btnLongBreak.PrimaryColor = Color.FromArgb(76, 145, 149);
@@ -241,7 +295,7 @@ namespace Pomodoro
             aloneProgressBar1.BackColor = Color.FromArgb(51, 97, 99);
             aloneProgressBar1.BorderColor = Color.FromArgb(51, 97, 99);
 
-            
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -275,7 +329,7 @@ namespace Pomodoro
         {
             DbContextOptionsBuilder<MyPomodoroProjectContext> builder = new DbContextOptionsBuilder<MyPomodoroProjectContext>();
             IConfigurationBuilder bd = new ConfigurationBuilder(); //Microsoft.Extensions.Configuration NuGet
-           
+
 
             string curdir = Directory.GetCurrentDirectory();
             string cutstr = curdir.Remove(curdir.Length - 25, 25);
@@ -295,7 +349,7 @@ namespace Pomodoro
                 MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
                 MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
                 context.Users.AddRange(user1, user);
-                 await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
                 MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
                 context.Tasks.AddRange(task1, task);
@@ -305,8 +359,8 @@ namespace Pomodoro
                 context.PomodoroSettings.AddRange(setting, setting1);
                 await context.SaveChangesAsync();
             }
-            
-                
+
+
         }
         async void CheckDB()
         {
@@ -336,10 +390,10 @@ namespace Pomodoro
             formSetting.Owner = this;
             if (formSetting.ShowDialog() == DialogResult.OK)
             {
-                using(MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+                using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                 {
                     currentSetings = context.PomodoroSettings.First(t => t.Id == currentSetings.Id);
-                    if(currentAction == 1)
+                    if (currentAction == 1)
                     {
                         m = currentSetings.PomodoroTime;
                         lblTimer.Text = $"{m.ToString("00")}:00";
@@ -359,18 +413,18 @@ namespace Pomodoro
         }
         //</Settings>----------------------------------------------------------------------------
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            FormLogin formLogin = new FormLogin(options);
-            if (formLogin.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-        }
-
         private void progressBar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                File.Delete(loginDocPath);
+                Application.Restart();
+            }
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
@@ -378,7 +432,7 @@ namespace Pomodoro
             FormAddTask formAddTask = new FormAddTask();
             if (formAddTask.ShowDialog() == DialogResult.OK)
             {
-               
+                
             }
         }
     }
