@@ -391,21 +391,19 @@ namespace Pomodoro
 
         private async void dungeonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int myTaskId = int.MaxValue;
+            if (lsbPlannedTasks.SelectedIndex != -1)
+            {
+                myTaskId = GetPlannedTaskId();
+            }
+            else return;
             if (dungeonComboBox1.SelectedIndex == 0)
             {
-                if (lsbPlannedTasks.SelectedIndex != -1)
-                {
-                    int myTaskId = GetPlannedTaskId();
-                    await EditeTask(myTaskId);
-                }
+                await EditeTask(myTaskId);
             }
             if (dungeonComboBox1.SelectedIndex == 1)
             {
-                if (lsbPlannedTasks.SelectedIndex != -1)
-                {
-                    int myTaskId = GetPlannedTaskId();
-                    await DeleteTask(myTaskId);
-                }
+                await DeleteTask(myTaskId);
             }
             await UpdateAllListBoxes();
         }
@@ -451,25 +449,22 @@ namespace Pomodoro
 
         private async void dungeonComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int myTaskId = GetCurrentTaskId();
+            int myTaskId = int.MaxValue;
+            if (lsbCurrentTasks.SelectedIndex != -1)
+            {
+                myTaskId = GetCurrentTaskId();
+            }
+            else return;
             if (dungeonComboBox2.SelectedIndex == 0)
             {
-                if (lsbCurrentTasks.SelectedIndex != -1)
-                {
                     await EditeTask(myTaskId);
-                }
             }
             if (dungeonComboBox2.SelectedIndex == 1)
             {
-                if (lsbCurrentTasks.SelectedIndex != -1)
-                {
                     await DeleteTask(myTaskId);
-                }
             }
             if (dungeonComboBox2.SelectedIndex == 2)
             {
-                if (lsbCurrentTasks.SelectedIndex != -1)
-                {
                     using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                     {
                         DialogResult result = MessageBox.Show("Are you sure you want to finish task earlier?", "Finish", MessageBoxButtons.YesNo);
@@ -482,7 +477,6 @@ namespace Pomodoro
                             await context.SaveChangesAsync();
                         }
                     }
-                }
             }
             await UpdateAllListBoxes();
         }
