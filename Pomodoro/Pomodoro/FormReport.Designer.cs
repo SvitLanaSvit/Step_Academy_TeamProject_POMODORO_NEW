@@ -75,6 +75,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(532, 673);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -327,23 +328,25 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(524, 634);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Runking";
+            this.tabPage3.Text = "Ranking";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // gpbFocusTimeDetailRanking
             // 
             this.gpbFocusTimeDetailRanking.Controls.Add(this.listViewUserTime);
             this.gpbFocusTimeDetailRanking.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gpbFocusTimeDetailRanking.Location = new System.Drawing.Point(7, 7);
+            this.gpbFocusTimeDetailRanking.Location = new System.Drawing.Point(7, 3);
             this.gpbFocusTimeDetailRanking.Name = "gpbFocusTimeDetailRanking";
-            this.gpbFocusTimeDetailRanking.Size = new System.Drawing.Size(510, 620);
+            this.gpbFocusTimeDetailRanking.Size = new System.Drawing.Size(510, 624);
             this.gpbFocusTimeDetailRanking.TabIndex = 2;
             this.gpbFocusTimeDetailRanking.TabStop = false;
-            this.gpbFocusTimeDetailRanking.Text = "Focus Time Detail";
+            this.gpbFocusTimeDetailRanking.Text = "Top 10 Users";
             // 
             // listViewUserTime
             // 
+            this.listViewUserTime.Enabled = false;
             this.listViewUserTime.Location = new System.Drawing.Point(6, 42);
+            this.listViewUserTime.MultiSelect = false;
             this.listViewUserTime.Name = "listViewUserTime";
             this.listViewUserTime.Size = new System.Drawing.Size(498, 572);
             this.listViewUserTime.TabIndex = 0;

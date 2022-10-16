@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Pomodoro",
-    "\\Pomodoro\\Pomodoro",
-    "\\Pomodoro\\Pomodoro\\DataBase",
-    "\\Pomodoro\\Pomodoro\\DataBase\\Context"
+    "\\Pomodoro\\Pomodoro"
   ],
-  "SelectedNode": "\\Pomodoro\\Pomodoro\\DataBase\\Context\\MyContextFactory.cs",
+  "SelectedNode": "\\Pomodoro\\Pomodoro\\FormReport.cs",
   "PreviewInSolutionExplorer": false
 }
