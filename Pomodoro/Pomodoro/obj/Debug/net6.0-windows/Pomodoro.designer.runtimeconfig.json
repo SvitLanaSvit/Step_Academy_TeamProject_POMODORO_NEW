@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\mazur\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\mazur\\.nuget\\packages"
+      "C:\\Users\\artuo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\artuo\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.NullabilityInfoContext.IsSupported": true,

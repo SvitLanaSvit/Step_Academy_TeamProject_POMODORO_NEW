@@ -344,3 +344,5 @@ D:\all\Проекты\Pomodoro 3\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\
 D:\all\Проекты\Pomodoro 3\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\Pomodoro\obj\Debug\net6.0-windows\Pomodoro.csproj.CopyComplete
 D:\all\Проекты\Pomodoro 3\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\Pomodoro\obj\Debug\net6.0-windows\Pomodoro.genruntimeconfig.cache
 D:\all\Проекты\Pomodoro 3\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\Pomodoro\obj\Debug\net6.0-windows\ref\Pomodoro.dll
+C:\Users\artuo\Source\Repos\SvitLanaSvit\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\Pomodoro\obj\Debug\net6.0-windows\Pomodoro.FormForgotPassword.resources
+C:\Users\artuo\Source\Repos\SvitLanaSvit\Step_Academy_TeamProject_POMODORO_NEW\Pomodoro\Pomodoro\obj\Debug\net6.0-windows\Pomodoro.FormRegistration.resources
