@@ -38,6 +38,7 @@ namespace Pomodoro
             StartDB();
             //CheckDB();
             //CreateForDB();
+
             try
             {
                 if (File.Exists(loginDocPath))  //Local authentication
@@ -136,6 +137,29 @@ namespace Pomodoro
             }
         }
 
+        private async Task UpdateAllListBoxesAsync()
+        {
+            using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+            {
+                List<MyTask>? plannedTasks = await context.Tasks.Where(task => task.UserId == currentUser.Id && task.TaskState == TaskState.Created).ToListAsync();
+                lsbPlannedTasks.Invoke(() =>
+                {
+                    lsbPlannedTasks.DataSource = null;
+                    lsbPlannedTasks.DisplayMember = nameof(MyTask.Name);
+                    lsbPlannedTasks.ValueMember = nameof(MyTask.Id);
+                    lsbPlannedTasks.DataSource = plannedTasks;
+                });
+
+                List<MyTask>? currentTasks = await context.Tasks.Where(task => task.UserId == currentUser.Id && task.TaskState == TaskState.Current).ToListAsync();
+                lsbCurrentTasks.Invoke(() =>
+                {
+                    lsbCurrentTasks.DataSource = null;
+                    lsbCurrentTasks.DisplayMember = nameof(MyTask.Name);
+                    lsbCurrentTasks.ValueMember = nameof(MyTask.Id);
+                    lsbCurrentTasks.DataSource = currentTasks;
+                });
+            }
+        }
         private void Timer_Tick(object? sender, EventArgs e)
         {
             Invoke(new Action(() =>
@@ -453,13 +477,40 @@ namespace Pomodoro
             }
         }
 
-        private void btnAddTask_Click(object sender, EventArgs e)
+        private void InvokeCriticalError(string errorMessage)
         {
-            FormAddTask formAddTask = new FormAddTask();
+            Invoke(() =>
+            {
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            });
+        }
+        #region Adding task
+        private async void OnButtonAddTaskClick(object sender, EventArgs e)
+        {
+            MyTask taskToBeAdded = new();
+            FormAddTask formAddTask = new FormAddTask(taskToBeAdded);
+
             if (formAddTask.ShowDialog() == DialogResult.OK)
             {
-                
+                using (MyPomodoroProjectContext context = new(options))
+                {
+                    MyUser? userEntity = await context.FindAsync<MyUser>(currentUser.Id);
+                    if (userEntity is null)
+                    {
+                        InvokeCriticalError("Current user entity missing from the database");
+                    }
+                    else
+                    {
+                        taskToBeAdded.User = userEntity;
+
+                        await context.Tasks.AddAsync(taskToBeAdded);
+                        await context.SaveChangesAsync();
+                        await UpdateAllListBoxesAsync();
+                    }
+                }
             }
         }
+        #endregion
     }
 }

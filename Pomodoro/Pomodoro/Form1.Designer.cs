@@ -243,7 +243,7 @@
             this.btnAddTask.Text = "+Add Task";
             this.btnAddTask.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(121)))), ((int)(((byte)(116)))));
             this.btnAddTask.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
-            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
+            this.btnAddTask.Click += new System.EventHandler(this.OnButtonAddTaskClick);
             // 
             // lsbPlannedTasks
             // 

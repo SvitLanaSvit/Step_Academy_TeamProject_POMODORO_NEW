@@ -30,9 +30,10 @@
         {
             this.txtTask = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.nudEstPomodoros = new ReaLTaiizor.Controls.FoxNumeric();
             this.btnOKAddTask = new ReaLTaiizor.Controls.HopeRoundButton();
             this.btnCancelAddTask = new ReaLTaiizor.Controls.HopeRoundButton();
+            this.nudEstPomodoros = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEstPomodoros)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTask
@@ -40,14 +41,13 @@
             this.txtTask.BackColor = System.Drawing.SystemColors.Control;
             this.txtTask.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTask.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtTask.ForeColor = System.Drawing.Color.LightGray;
+            this.txtTask.ForeColor = System.Drawing.Color.Black;
             this.txtTask.Location = new System.Drawing.Point(10, 9);
             this.txtTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTask.Name = "txtTask";
+            this.txtTask.PlaceholderText = "What are you working on?";
             this.txtTask.Size = new System.Drawing.Size(444, 22);
             this.txtTask.TabIndex = 0;
-            this.txtTask.Text = "What are you working for?";
-            this.txtTask.UseWaitCursor = true;
             // 
             // label1
             // 
@@ -57,28 +57,6 @@
             this.label1.Size = new System.Drawing.Size(87, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Est Pomodoros";
-            this.label1.UseWaitCursor = true;
-            // 
-            // nudEstPomodoros
-            // 
-            this.nudEstPomodoros.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.nudEstPomodoros.ButtonTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(98)))), ((int)(((byte)(110)))));
-            this.nudEstPomodoros.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.nudEstPomodoros.DisabledButtonTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(198)))), ((int)(((byte)(210)))));
-            this.nudEstPomodoros.DisabledTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(178)))), ((int)(((byte)(190)))));
-            this.nudEstPomodoros.EnabledCalc = true;
-            this.nudEstPomodoros.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nudEstPomodoros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.nudEstPomodoros.Location = new System.Drawing.Point(10, 60);
-            this.nudEstPomodoros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudEstPomodoros.Max = 100;
-            this.nudEstPomodoros.Min = 0;
-            this.nudEstPomodoros.Name = "nudEstPomodoros";
-            this.nudEstPomodoros.Size = new System.Drawing.Size(95, 27);
-            this.nudEstPomodoros.TabIndex = 2;
-            this.nudEstPomodoros.Text = "foxNumeric1";
-            this.nudEstPomodoros.UseWaitCursor = true;
-            this.nudEstPomodoros.Value = 0;
             // 
             // btnOKAddTask
             // 
@@ -98,8 +76,8 @@
             this.btnOKAddTask.TabIndex = 3;
             this.btnOKAddTask.Text = "OK";
             this.btnOKAddTask.TextColor = System.Drawing.Color.White;
-            this.btnOKAddTask.UseWaitCursor = true;
             this.btnOKAddTask.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnOKAddTask.Click += new System.EventHandler(this.OnButtonOkClick);
             // 
             // btnCancelAddTask
             // 
@@ -119,26 +97,47 @@
             this.btnCancelAddTask.TabIndex = 4;
             this.btnCancelAddTask.Text = "Cancel";
             this.btnCancelAddTask.TextColor = System.Drawing.Color.White;
-            this.btnCancelAddTask.UseWaitCursor = true;
             this.btnCancelAddTask.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.btnCancelAddTask.Click += new System.EventHandler(this.OnCancelButtonClick);
+            // 
+            // nudEstPomodoros
+            // 
+            this.nudEstPomodoros.Location = new System.Drawing.Point(10, 61);
+            this.nudEstPomodoros.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.nudEstPomodoros.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudEstPomodoros.Name = "nudEstPomodoros";
+            this.nudEstPomodoros.Size = new System.Drawing.Size(87, 23);
+            this.nudEstPomodoros.TabIndex = 5;
+            this.nudEstPomodoros.ThousandsSeparator = true;
+            this.nudEstPomodoros.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // FormAddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 171);
+            this.Controls.Add(this.nudEstPomodoros);
             this.Controls.Add(this.btnCancelAddTask);
             this.Controls.Add(this.btnOKAddTask);
-            this.Controls.Add(this.nudEstPomodoros);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTask);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximizeBox = false;
             this.Name = "FormAddTask";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Task";
-            this.UseWaitCursor = true;
+            ((System.ComponentModel.ISupportInitialize)(this.nudEstPomodoros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,8 +147,8 @@
 
         private TextBox txtTask;
         private Label label1;
-        private ReaLTaiizor.Controls.FoxNumeric nudEstPomodoros;
         private ReaLTaiizor.Controls.HopeRoundButton btnOKAddTask;
         private ReaLTaiizor.Controls.HopeRoundButton btnCancelAddTask;
+        private NumericUpDown nudEstPomodoros;
     }
 }
