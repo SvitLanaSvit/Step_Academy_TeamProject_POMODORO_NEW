@@ -9,16 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http.Headers;
+using Pomodoro.DataBase.Models;
+using Microsoft.Data.SqlClient;
+using Dapper;
+using Pomodoro.DataBase.ViewClasses;
 
 namespace Pomodoro
 {
     public partial class FormReport : Form
     {
-        public FormReport()
+        public FormReport(string connstr)
         {
             InitializeComponent();
-        }
+            ConnStr = connstr;
+            listViewUserTime.Columns.Add("User", listViewUserTime.Width/2-2, HorizontalAlignment.Left);
+            listViewUserTime.Columns.Add("WorkTime", listViewUserTime.Width/2-2, HorizontalAlignment.Left);
+            listViewUserTime.View = View.Details;
 
+        }
+        string ConnStr;
         private void btnDay_Click(object sender, EventArgs e)
         {
 
@@ -55,6 +65,31 @@ namespace Pomodoro
         private void CartesianChart1_DataClick(object sender, ChartPoint chartPoint)
         {
             MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
+        }
+
+        private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex==2)
+            {
+                listViewUserTime.Items.Clear();
+               
+
+                string query = "Select top 10 U.Login as 'User' ,Sum(T.WorkTime) as WorkTime from Users U join Tasks T on T.UserId = U.Id group by U.Login order by Sum(T.WorkTime) desc";
+                using (var connection = new SqlConnection(ConnStr))
+                {
+                    var buf = await connection.QueryAsync<RankClass>(query);
+                    foreach (var item in buf)
+                    {
+                        ListViewItem it = listViewUserTime.Items.Add(item.User);
+                        it.SubItems.Add($"{item.WorkTime}");  
+                    }
+                }
+
+
+
+
+
+            }
         }
     }
 }

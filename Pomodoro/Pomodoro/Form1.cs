@@ -31,7 +31,7 @@ namespace Pomodoro
         {
             StartDB();
             //CheckDB();
-            CreateForDB();
+            //CreateForDB();
             //DeleteFromDB();
             lblTimer.Text = "25:00";
             this.BackColor = Color.FromArgb(215, 84, 79);
@@ -260,18 +260,19 @@ namespace Pomodoro
         {
             using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
             {
-                //MyUser user = new MyUser { Login = "try1", Password = "try1", SecretAnswer = "try1", SecretAsk = "try1" };
+                MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
                 //MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
 
-                //context.Users.AddRange( user);
-                //await context.SaveChangesAsync();
-                //MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CheckDB", WorkTime = 0, UserId = user.Id, User = user };
-                //MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
-                //context.Tasks.AddRange( task);
-                //await context.SaveChangesAsync();
-                //Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user, UserId = user.Id };
+                context.Users.AddRange( user);
+                await context.SaveChangesAsync();
+                MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, TaskState=TaskState.Created, Name = "CheckDB", WorkTime = 50, UserId = user.Id, User = user };
+                MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, TaskState = TaskState.Current, Name = "CreateDefaultSettings", WorkTime = 50, UserId = user.Id, User = user };
+                context.Tasks.AddRange( task,task1);
+                await context.SaveChangesAsync();
+                //Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, User = user, UserId = user.Id };
                 //Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
-                //context.PomodoroSettings.AddRange(setting, setting1);
+                //context.PomodoroSettings.AddRange(setting);
+                //await context.SaveChangesAsync();
                 //CurrentState cr = new CurrentState { LongBreakTime = 25, ShortBreakTime = 10, PomodoroTime = 5, UserId = user.Id, TaskId = task.Id, User = user, MyTask=task};
                 //context.CurrentStates.Add(cr);
                 //await context.SaveChangesAsync();
@@ -306,7 +307,7 @@ namespace Pomodoro
         //</DataBase>----------------------------------------------------------------------------
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FormReport formReport = new FormReport();
+            FormReport formReport = new FormReport(ConnStr);
             if (formReport.ShowDialog() == DialogResult.OK)
             {
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bDd4oqoIdGfJy11yMosmnbPwbPJUrIGCJ7nYR5Hu1hXFAwMd16SIWPBSXtM/6JAR14cnMsNR5XWytAeRrVOfjQ==",
+  "dgSpecHash": "XMrwyy06EjC+pBhI9XpeVIlKhZmjo27uNi1g2fBKnrJUVDu8ym0+2+4vAPCYvqSpgdpagLFWFskZU/92c8S0uQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\artuo\\source\\repos\\SvitLanaSvit\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+  "projectFilePath": "C:\\Users\\artuo\\Source\\Repos\\SvitLanaSvit\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\artuo\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\artuo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
