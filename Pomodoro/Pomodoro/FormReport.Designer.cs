@@ -354,10 +354,8 @@
             // 
             this.gpbFocusTimeDetailRanking.Controls.Add(this.listViewUserTime);
             this.gpbFocusTimeDetailRanking.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            
             this.gpbFocusTimeDetailRanking.Location = new System.Drawing.Point(7, 7);
             this.gpbFocusTimeDetailRanking.Name = "gpbFocusTimeDetailRanking";
-            
             this.gpbFocusTimeDetailRanking.Size = new System.Drawing.Size(510, 620);
             this.gpbFocusTimeDetailRanking.TabIndex = 2;
             this.gpbFocusTimeDetailRanking.TabStop = false;
@@ -365,12 +363,13 @@
             // 
             // listViewUserTime
             // 
-            
+            this.listViewUserTime.Enabled = false;
             this.listViewUserTime.Location = new System.Drawing.Point(6, 42);
             this.listViewUserTime.Name = "listViewUserTime";
             this.listViewUserTime.Size = new System.Drawing.Size(436, 430);
             this.listViewUserTime.TabIndex = 0;
             this.listViewUserTime.UseCompatibleStateImageBehavior = false;
+            this.listViewUserTime.SelectedIndexChanged += new System.EventHandler(this.listViewUserTime_SelectedIndexChanged);
             // 
             // FormReport
             // 

@@ -53,7 +53,7 @@ namespace Pomodoro
                         registerMyUser.Password = txtUserPassword.Text;
                         registerMyUser.SecretAsk = txtSecretTask.Text;
                         registerMyUser.SecretAnswer = txtAnswerSecretTask.Text;
-                        registerMyUser.settings.Add(settings);
+                        registerMyUser.Settings = settings;
                         context.Users.Add(registerMyUser);
                         //await context.SaveChangesAsync();
                         settings.UserId = registerMyUser.Id;

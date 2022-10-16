@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\all\\Проекты\\Pomodoro2\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj": {}
+    "D:\\all\\Проекты\\Pomodoro 3\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj": {}
   },
   "projects": {
-    "D:\\all\\Проекты\\Pomodoro2\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj": {
+    "D:\\all\\Проекты\\Pomodoro 3\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\all\\Проекты\\Pomodoro2\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+        "projectUniqueName": "D:\\all\\Проекты\\Pomodoro 3\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
         "projectName": "Pomodoro",
-        "projectPath": "D:\\all\\Проекты\\Pomodoro2\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
+        "projectPath": "D:\\all\\Проекты\\Pomodoro 3\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\Pomodoro.csproj",
         "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-        "outputPath": "D:\\all\\Проекты\\Pomodoro2\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\obj\\",
+        "outputPath": "D:\\all\\Проекты\\Pomodoro 3\\Step_Academy_TeamProject_POMODORO_NEW\\Pomodoro\\Pomodoro\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config",

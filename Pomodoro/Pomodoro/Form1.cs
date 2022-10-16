@@ -60,12 +60,20 @@ namespace Pomodoro
                         using (MyPomodoroProjectContext context = new(options))
                         {
                             context.Users.Load();
+                            
                             foreach (var item in context.Users)
                             {
                                 if (item.Login == loginData.Login && item.Password == loginData.Password)
                                 {
                                     searchCount = 1;
                                     this.currentUser = item;
+                                    using (MyPomodoroProjectContext context2 = new(options))
+                                    {
+                                        context2.PomodoroSettings.Load();
+                                        currentSetings = context2.PomodoroSettings.First(t => t.UserId == currentUser.Id);
+                                    }
+                                   
+                                    //this.currentSetings = currentUser.Settings;
                                     break;
                                 }
                             }
@@ -78,6 +86,18 @@ namespace Pomodoro
                         }
                         else
                         {
+                            currentAction = 1;
+                            m = currentSetings.PomodoroTime;
+                            s = 0;
+                            lblTimer.Text = $"{m}:00";
+                            this.BackColor = Color.FromArgb(215, 84, 79);
+
+                            timer = new Timer();
+                            timer.Interval = 1000;
+                            timer.Tick += Timer_Tick;
+
+                            aloneProgressBar1.Value = 0;
+                            aloneProgressBar1.Maximum = m * 60 + s;
                             return;
                         }
                     }
@@ -95,8 +115,6 @@ namespace Pomodoro
             {
                 using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                 {
-                    //MessageBox.Show($"{currentUser.Login}, {currentUser.Password}");
-                    //lblTimer.Text = "25:00";
                     currentAction = 1;
                     currentSetings = context.PomodoroSettings.First(t => t.UserId == currentUser.Id);
                     m = currentSetings.PomodoroTime;
@@ -107,13 +125,6 @@ namespace Pomodoro
                     timer = new Timer();
                     timer.Interval = 1000;
                     timer.Tick += Timer_Tick;
-
-                    //if (lblTimer.Text.Contains("25:00"))
-                    //    m = 25; s = 0;
-                    //if (lblTimer.Text.Contains("15:00"))
-                    //    m = 15; s = 0;
-                    //if (lblTimer.Text.Contains("05:00"))
-                    //    m = 5; s = 0;
 
                     aloneProgressBar1.Value = 0;
                     aloneProgressBar1.Maximum = m * 60 + s;
@@ -343,25 +354,25 @@ namespace Pomodoro
         }
         async void CreateForDB()
         {
-            using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
-            {
-                MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
+            //using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+            //{
+            //    MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
                 
-                MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
-                context.Users.AddRange(user1, user);
-                 await context.SaveChangesAsync();
-                MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
-                MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
-                context.Tasks.AddRange(task1, task);
-                await context.SaveChangesAsync();
-                //Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, User = user, UserId = user.Id };
-                //Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
-                //context.PomodoroSettings.AddRange(setting);
-                //await context.SaveChangesAsync();
-                //CurrentState cr = new CurrentState { LongBreakTime = 25, ShortBreakTime = 10, PomodoroTime = 5, UserId = user.Id, TaskId = task.Id, User = user, MyTask=task};
-                //context.CurrentStates.Add(cr);
-                //await context.SaveChangesAsync();
-            }
+            //    MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
+            //    context.Users.AddRange(user1, user);
+            //     await context.SaveChangesAsync();
+            //    //MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
+            //    //MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
+            //    context.Tasks.AddRange(task1, task);
+            //    await context.SaveChangesAsync();
+            //    //Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, User = user, UserId = user.Id };
+            //    //Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
+            //    //context.PomodoroSettings.AddRange(setting);
+            //    //await context.SaveChangesAsync();
+            //    //CurrentState cr = new CurrentState { LongBreakTime = 25, ShortBreakTime = 10, PomodoroTime = 5, UserId = user.Id, TaskId = task.Id, User = user, MyTask=task};
+            //    //context.CurrentStates.Add(cr);
+            //    //await context.SaveChangesAsync();
+            //}
 
 
         }
