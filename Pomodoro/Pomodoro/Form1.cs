@@ -19,7 +19,7 @@ namespace Pomodoro
         public FormMain()
         {
             InitializeComponent();
-            loginDocPath = "login.json";
+            loginDocPath = "loginData.json";
         }
 
         //Timer------------------------------------------------------------------------------
@@ -48,7 +48,9 @@ namespace Pomodoro
                     {
                         IncludeFields = true
                     };
-                    (string Login, string Password) loginData = JsonSerializer.Deserialize<(string, string)>(fs, jsoptions);
+                    (string EncryptedLogin, string EncryptedPassword) encryptedLoginData = JsonSerializer.Deserialize<(string, string)>(fs, jsoptions);
+                    (string Login, string Password) loginData = new(Rijndael256.Rijndael.Decrypt(encryptedLoginData.EncryptedLogin, "encpass", Rijndael256.KeySize.Aes256),
+                        Rijndael256.Rijndael.Decrypt(encryptedLoginData.EncryptedPassword, "encpass", Rijndael256.KeySize.Aes256));
                     if (String.IsNullOrEmpty(loginData.Login) || String.IsNullOrEmpty(loginData.Password))
                     {
                         File.Delete(loginDocPath);

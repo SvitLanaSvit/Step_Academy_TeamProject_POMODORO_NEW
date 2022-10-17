@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic.Logging;
 using Pomodoro.DataBase.Context;
 using Pomodoro.DataBase.Models;
+using Rijndael256;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,14 +69,14 @@ namespace Pomodoro
                             {
                                 searchCount = 1;
                                 owner.currentUser = item;
-
-                                (string Login, string Password) loginData = new(item.Login, item.Password);
+                                (string EncryptedLogin, string EncryptedPassword) encryptedLoginData = new(Rijndael.Encrypt(item.Login, "encpass", KeySize.Aes256),
+                                    Rijndael.Encrypt(item.Password, "encpass", KeySize.Aes256));
                                 using FileStream fs = new(loginDocPath, FileMode.Create);
                                 JsonSerializerOptions jsoptions = new()
                                 {
                                     IncludeFields = true
                                 };
-                                JsonSerializer.Serialize(fs, loginData, jsoptions); //Local authentication
+                                JsonSerializer.Serialize(fs, encryptedLoginData, jsoptions); //Local authentication
 
                                 break;
                             }
