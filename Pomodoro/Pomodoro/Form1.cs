@@ -427,7 +427,7 @@ namespace Pomodoro
         //</DataBase>----------------------------------------------------------------------------
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FormReport formReport = new FormReport(ConnStr);
+            FormReport formReport = new FormReport(ConnStr,currentUser);
             if (formReport.ShowDialog() == DialogResult.OK)
             {
 

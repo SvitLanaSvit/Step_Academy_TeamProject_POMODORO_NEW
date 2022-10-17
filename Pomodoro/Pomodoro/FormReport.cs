@@ -14,18 +14,23 @@ using Pomodoro.DataBase.Models;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using Pomodoro.DataBase.ViewClasses;
+using Microsoft.VisualBasic.ApplicationServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using System.Windows.Media.Animation;
 
 namespace Pomodoro
 {
     public partial class FormReport : Form
     {
-        public FormReport(string connstr)
+        private MyUser currentUser;
+        public FormReport(string connstr,MyUser currentUser)
         {
             InitializeComponent();
             ConnStr = connstr;
             listViewUserTime.Columns.Add("User", listViewUserTime.Width/2-2, HorizontalAlignment.Left);
             listViewUserTime.Columns.Add("WorkTime", listViewUserTime.Width/2-2, HorizontalAlignment.Left);
             listViewUserTime.View = View.Details;
+           this.currentUser= currentUser;
 
         }
         string ConnStr;
@@ -33,12 +38,13 @@ namespace Pomodoro
         {
 
         }
-
+       
         private void FormReport_Load(object sender, EventArgs e)
         {
             ChartValues<double> chartValues = new ChartValues<double> { 5, 3, 2, 4, 5 };
             string[] arr = new string[] { "1", "2", "3", "4", "5" };
             Diagramm(chartValues, arr);
+            Details();
         }
 
         private void Diagramm(ChartValues<double> chartValues, string[] arr)
@@ -84,12 +90,30 @@ namespace Pomodoro
                         it.SubItems.Add($"{item.WorkTime}");  
                     }
                 }
-
-
-
-
-
             }
+        }
+        private async void Details()
+        {
+            listViewDateTaskMinuts.View = View.Details;
+            listViewDateTaskMinuts.Columns.Add("Date", listViewDateTaskMinuts.Width / 3 - 3, HorizontalAlignment.Left);
+            listViewDateTaskMinuts.Columns.Add("Task", listViewDateTaskMinuts.Width / 3 - 3, HorizontalAlignment.Left);
+            listViewDateTaskMinuts.Columns.Add("Minutes", listViewDateTaskMinuts.Width / 3 - 3, HorizontalAlignment.Left);
+            listViewDateTaskMinuts.Items.Clear();
+            string query = $"Select T.DateOfFinish, T.Name as 'NameTask',T.WorkTime from Tasks T where T.UserId = {currentUser.Id} and T.TaskState = 'TaskState.Finished' ";//and T.TaskState = 'TaskState.Finished'
+            MessageBox.Show($"{currentUser.Id}");
+            using (var connection = new SqlConnection(ConnStr))
+            {
+                var b = await connection.QueryAsync<DetailsClass>(query);
+                foreach(var i in b)
+                {
+                    ListViewItem item = listViewDateTaskMinuts.Items.Add(i.DateOfFinish.ToString());
+                    item.SubItems.Add(i.NameTask);
+                    item.SubItems.Add($"{i.WorkTime}");
+                }
+            }
+            
+            //Select* from Tasks where UserId = 'Id current user' and IsFinished = 1
+
         }
 
         private void listViewUserTime_SelectedIndexChanged(object sender, EventArgs e)
