@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace Pomodoro.DataBase.Models
 {
-    public class Settings
+    public class CurrentState
     {
         public int Id { get; set; }
-        public int PomodoroTime { get; set; }
-        public int LongBreakTime { get; set; }
-        public int ShortBreakTime { get; set; }
-        public int Music { get; set; }
+        public double PomodoroTime { get; set; } = 0;
+        public double LongBreakTime { get; set; } = 0;
+        public double ShortBreakTime { get; set; } = 0;
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
-       public MyUser User { get; set; } = new MyUser();
-        
+        public MyUser User { get; set; } = new MyUser();
     }
 }

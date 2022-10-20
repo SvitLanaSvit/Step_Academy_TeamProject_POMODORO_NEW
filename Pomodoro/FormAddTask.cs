@@ -31,22 +31,23 @@ namespace Pomodoro
             if (!string.IsNullOrEmpty(txtTask.Text))
                 myTask.Name = txtTask.Text;
             if (nudEstPomodoros.Value != 0)
+            {
                 myTask.MaxPomodoros = nudEstPomodoros.Value;
+            }
             else
             {
                 MessageBox.Show("Please provide correct data!");
                 return;
             }
             myTask.EatPomodoros = 0;
-            myTask.DateOfFinish = null;
-            myTask.IsCurrent = false;
-            myTask.IsFinished = false;
+            if(myTask.TaskState != TaskState.Active)
+            myTask.TaskState = TaskState.Created;
             DialogResult = DialogResult.OK;
         }
         private void Initialize(MyTask myTask)
         {
             txtTask.Text = myTask.Name;
-            nudEstPomodoros.Value = myTask.EatPomodoros;
+            nudEstPomodoros.Value = myTask.MaxPomodoros;
         }
 
         private void btnCancelAddTask_Click(object sender, EventArgs e)
@@ -54,6 +55,7 @@ namespace Pomodoro
             this.Close();
             DialogResult = DialogResult.Cancel;
         }
+
 
     }
 }

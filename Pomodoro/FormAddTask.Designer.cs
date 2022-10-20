@@ -140,6 +140,7 @@
             this.Name = "FormAddTask";
             this.Text = "Add Task";
             this.UseWaitCursor = true;
+            this.Load += new System.EventHandler(this.FormAddTask_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

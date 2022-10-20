@@ -15,11 +15,12 @@ namespace Pomodoro.DataBase.Models
         public string SecretAnswer { get; set; }
         //public List<MyTask> Tasks { get; set; } = new List<MyTask>();
         //public List<Settings> settings { get; set; } = new List<Settings>();
-        public ICollection<Settings> settings { get; set; }
+        public Settings Settings { get; set; }
+        //public ICollection<Settings> settings { get; set; }
         public ICollection<MyTask> Tasks { get; set; }
+        public CurrentState CurrentState { get; set; }
         public MyUser()
         {
-            settings = new HashSet<Settings>();
             Tasks = new HashSet<MyTask>();
         }
     }

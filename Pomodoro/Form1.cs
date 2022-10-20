@@ -20,6 +20,7 @@ namespace Pomodoro
             InitializeComponent();
         }
         //Timer------------------------------------------------------------------------------
+        int currentTaskId = -1;
         Timer timer = null!;
         int m, s;
         int currentAction;
@@ -41,9 +42,9 @@ namespace Pomodoro
                 using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
                 {
                     //MessageBox.Show($"{currentUser.Login}, {currentUser.Password}");
-                    //lblTimer.Text = "25:00";
+                    //lblTimer.Text = "25:00";        
                     currentAction = 1;
-                    currentSetings = context.PomodoroSettings.First(t => t.UserId == currentUser.Id);
+                    currentSetings = await context.PomodoroSettings.FirstOrDefaultAsync(t => t.UserId == currentUser.Id);
                     m = currentSetings.PomodoroTime;
                     s = 0;
                     lblTimer.Text = $"{m}:00";
@@ -62,7 +63,12 @@ namespace Pomodoro
 
                     aloneProgressBar1.Value = 0;
                     aloneProgressBar1.Maximum = m * 60 + s;
-                    await UpdateAllListBoxes();
+                    await UpdateAllListBoxes().ContinueWith(async (_) => {
+                        await Task.Delay(100);
+                      
+                    }
+                    );
+                   
                 }
             }
             else
@@ -76,16 +82,18 @@ namespace Pomodoro
         {
             using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
             {
-                var plannedTasks = await context.Tasks.Where(e => e.UserId == currentUser.Id && e.IsCurrent == false).ToListAsync();
+                var plannedTasks = await context.Tasks.Where(e => e.UserId == currentUser.Id && e.TaskState == TaskState.Created).ToListAsync();
                 lsbPlannedTasks.DataSource = null;
                 lsbPlannedTasks.DisplayMember = nameof(MyTask.Name);
                 lsbPlannedTasks.ValueMember = "Id";
                 lsbPlannedTasks.DataSource = plannedTasks;
-                var currentTasks = await context.Tasks.Where(e => e.UserId == currentUser.Id && e.IsCurrent == true).ToListAsync();
+                lsbPlannedTasks.SelectedIndex = -1;
+                var currentTasks = await context.Tasks.Where(e => e.UserId == currentUser.Id && e.TaskState == TaskState.Active).ToListAsync();
                 lsbCurrentTasks.DataSource = null;
                 lsbCurrentTasks.DisplayMember = nameof(MyTask.Name);
                 lsbCurrentTasks.ValueMember = "Id";
                 lsbCurrentTasks.DataSource = currentTasks;
+                lsbCurrentTasks.SelectedIndex = -1;
             }
         }
         private void Timer_Tick(object? sender, EventArgs e)
@@ -262,24 +270,34 @@ namespace Pomodoro
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            player?.Stop();
-            if (isRunning == true)
+            if (lsbCurrentTasks.SelectedIndex != -1)
             {
-                timer.Stop();
-                Application.DoEvents();
-                isRunning = false;
-                btnStart.Text = "Start";
+                player?.Stop();
+                if (isRunning == true)
+                {
+                    currentTaskId = -1;
+                    timer.Stop();
+                    Application.DoEvents();
+                    isRunning = false;
+                    btnStart.Text = "Start";
+                }
+                else
+                {
+                    currentTaskId = GetCurrentTaskId();
+                    btnStart.Text = "Stop";
+                    timer.Start();
+                    isRunning = true;
+                }
+
+                if (lblTimer.Text.Contains("00:00"))
+                {
+                    MessageBox.Show("Choose level to start!");
+                }
             }
             else
             {
-                btnStart.Text = "Stop";
-                timer.Start();
-                isRunning = true;
-            }
-
-            if (lblTimer.Text.Contains("00:00"))
-            {
-                MessageBox.Show("Choose level to start!");
+                MessageBox.Show("Please, select current task to start!");
+                return;
             }
         }
         //Timer------------------------------------------------------------------------------
@@ -306,21 +324,21 @@ namespace Pomodoro
         }
         async void CreateForDB()
         {
-            using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
-            {
-                MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
-                MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
-                context.Users.AddRange(user1, user);
-                await context.SaveChangesAsync();
-                MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
-                MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
-                context.Tasks.AddRange(task1, task);
-                await context.SaveChangesAsync();
-                Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user, UserId = user.Id };
-                Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
-                context.PomodoroSettings.AddRange(setting, setting1);
-                await context.SaveChangesAsync();
-            }
+            //using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+            //{
+            //    MyUser user = new MyUser { Login = "try", Password = "try", SecretAnswer = "try", SecretAsk = "try" };
+            //    MyUser user1 = new MyUser { Login = "Log", Password = "Pas", SecretAnswer = "Ans", SecretAsk = "Ask" };
+            //    context.Users.AddRange(user1, user);
+            //    await context.SaveChangesAsync();
+            //    //MyTask task = new MyTask { EatPomodoros = 0, MaxPomodoros = 3, DateOfFinish = null, IsCurrent = false, IsFinished = false, Name = "CreateDB", WorkTime = 0, UserId = user.Id, User = user };
+            //    MyTask task1 = new MyTask { EatPomodoros = 1, MaxPomodoros = 4, DateOfFinish = null, IsCurrent = true, IsFinished = false, Name = "CreateDefaultSettings", WorkTime = 25, UserId = user1.Id, User = user1 };
+            //    context.Tasks.AddRange(task1, task);
+            //    await context.SaveChangesAsync();
+            //    Settings setting = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user, UserId = user.Id };
+            //    Settings setting1 = new Settings { LongBreakTime = 25, ShortBreakTime = 15, PomodoroTime = 25, Music = 0, user = user1, UserId = user1.Id };
+            //    context.PomodoroSettings.AddRange(setting, setting1);
+            //    await context.SaveChangesAsync();
+            //}
 
 
         }
@@ -393,18 +411,12 @@ namespace Pomodoro
         {
             int myTaskId = int.MaxValue;
             if (lsbPlannedTasks.SelectedIndex != -1)
-            {
                 myTaskId = GetPlannedTaskId();
-            }
             else return;
             if (dungeonComboBox1.SelectedIndex == 0)
-            {
                 await EditeTask(myTaskId);
-            }
             if (dungeonComboBox1.SelectedIndex == 1)
-            {
                 await DeleteTask(myTaskId);
-            }
             await UpdateAllListBoxes();
         }
         private int GetPlannedTaskId() => (int)lsbPlannedTasks.SelectedValue;
@@ -414,7 +426,7 @@ namespace Pomodoro
         {
             if (lsbPlannedTasks.SelectedIndex != -1)
             {
-                await FromPlannedToCurrent();
+                await FromPlannedToActive();
                 await UpdateAllListBoxes();
             }
         }
@@ -432,17 +444,17 @@ namespace Pomodoro
             using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
             {
                 MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
-                myTask!.IsCurrent = false;
+                myTask.TaskState = TaskState.Created;
                 await context.SaveChangesAsync();
             }
         }
-        private async Task FromPlannedToCurrent()
+        private async Task FromPlannedToActive()
         {
             int myTaskId = GetPlannedTaskId();
             using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
             {
                 MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
-                myTask!.IsCurrent = true;
+                myTask!.TaskState = TaskState.Active;
                 await context.SaveChangesAsync();
             }
         }
@@ -451,22 +463,14 @@ namespace Pomodoro
         {
             int myTaskId = int.MaxValue;
             if (lsbCurrentTasks.SelectedIndex != -1)
-            {
                 myTaskId = GetCurrentTaskId();
-            }
             else return;
             if (dungeonComboBox2.SelectedIndex == 0)
-            {
                     await EditeTask(myTaskId);
-            }
             if (dungeonComboBox2.SelectedIndex == 1)
-            {
                     await DeleteTask(myTaskId);
-            }
             if (dungeonComboBox2.SelectedIndex == 2)
-            {
                 await FinishTaskEarlier(myTaskId); 
-            }
             await UpdateAllListBoxes();
         }
 
@@ -493,7 +497,7 @@ namespace Pomodoro
                 if (result == DialogResult.Yes)
                 {
                     MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e => e.Id == myTaskId);
-                    myTask!.IsFinished = true;
+                    myTask!.TaskState = TaskState.Finished;
                     if (myTask!.EatPomodoros == 0)
                         myTask!.WorkTime += currentSetings.PomodoroTime - m;
                     else myTask!.WorkTime += (myTask.EatPomodoros * currentSetings.PomodoroTime + m); 
@@ -513,10 +517,22 @@ namespace Pomodoro
                     context.Tasks.Remove(myTask!);
                     await context.SaveChangesAsync();
                 }
-                else { return; }
+                else  return; 
             }
         }
 
+        private async void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isRunning)
+            {
+                using (MyPomodoroProjectContext context = new MyPomodoroProjectContext(options))
+                {
+                    MyTask? myTask = await context.Tasks.FirstOrDefaultAsync(e=> e.Id == currentTaskId);
+                    if(!context.Tasks.Any(e=> e.TaskState == TaskState.Current))
+                    myTask!.TaskState = TaskState.Current;
+                }
+            }
+        }
 
         private async void btnAddTask_Click(object sender, EventArgs e)
         {
