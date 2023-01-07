@@ -12,8 +12,8 @@ using Pomodoro.DataBase.Context;
 namespace Pomodoro.Migrations
 {
     [DbContext(typeof(MyPomodoroProjectContext))]
-    [Migration("20221014190455_initialDB")]
-    partial class initialDB
+    [Migration("20230107120513_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
