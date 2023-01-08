@@ -11,15 +11,19 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using Microsoft.VisualBasic;
 using System.Text.Json;
+using static System.Environment;
 
 namespace Pomodoro
 {
     public partial class FormMain : Form
     {
+        private readonly string dataFolderPath = Path.Combine(GetFolderPath(SpecialFolder.MyDocuments), "Pomodoro Project Data Folder");
+        private readonly string loginDocPath;
+
         public FormMain()
         {
             InitializeComponent();
-            loginDocPath = "loginData.json";
+            loginDocPath = Path.Combine(dataFolderPath, "loginData.json");
         }
 
         //Timer------------------------------------------------------------------------------
@@ -31,13 +35,29 @@ namespace Pomodoro
         SoundPlayer player = new SoundPlayer(path);
         internal MyUser currentUser = new();
         internal Settings currentSetings;
-        string loginDocPath;
+
+        private void DataFolderEnsureCreated()
+        {
+            try
+            {
+                if (!Directory.Exists(dataFolderPath))
+                {
+                    Directory.CreateDirectory(dataFolderPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Data folder creating error:{NewLine}{ex.Message}{NewLine}");
+            }
+        }
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             StartDB();
             //CheckDB();
             //CreateForDB();
+            DataFolderEnsureCreated();
 
             try
             {
